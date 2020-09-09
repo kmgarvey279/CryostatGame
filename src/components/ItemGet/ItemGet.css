@@ -7,8 +7,6 @@ div#wrap {
   height: 100%;
   padding-top: 10%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
 }
 div#item-content {
   margin: 10% auto;
@@ -17,21 +15,36 @@ div#item-content {
   height: 150px;
   background-color:DarkOrange; 
   border: 3px solid GoldenRod; 
-  font-size: 18px;
+  font-size: 22px;
+  padding-left: 15px;
 }
 
 div#header {
   font-weight: bold;
   margin-bottom: 5px;
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
-#item-icon img {
+.icon-box {
+  float: left;
+  padding-top: 45px;
+}
+
+.item-text-box {
+  margin-left: 60px;
+}
+
+#item-icon {
   margin-top: 10px;
   padding-left: 5px;
+  text-align: center;
 }
 
 #special-name {
   color: blue;
+}
+
+.item-button-prompt {
+  color: darkblue;
 }

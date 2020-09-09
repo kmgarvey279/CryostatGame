@@ -76,7 +76,12 @@ class Map extends React.Component {
             </div>
     };
 
-    if(this.state.screen === 0){
+    if(!this.props.player.items.includes('bracelet')){
+      return (
+        <div id="outerMap">
+        </div>
+      );
+    } else if(this.state.screen === 0){
       return (
         <div id="outerMap">
           {nav}

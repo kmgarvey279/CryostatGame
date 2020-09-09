@@ -14,7 +14,7 @@ div#doorEast {
 div#doorSouth {
   z-index: 500;
   position: absolute;
-  bottom: 5px;
+  bottom: -5px;
   left: -1px;
 }
 

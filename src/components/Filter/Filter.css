@@ -25,8 +25,8 @@ div#fire {
   }
 
   div#powerOff {
-  opacity: 0.4;
-  background-color: midnightblue;
+  opacity: 0.5;
+  background-color: black;
   z-index: 1;
   height: 100%;
   width: 100%;

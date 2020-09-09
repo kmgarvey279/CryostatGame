@@ -153,6 +153,32 @@ function Door(props){
       )
     };
   } else if (door.direction == 'west') {
+    if(door.isLocked === 'keyCard1') {
+      if(door.status === 'closed') {
+        return (
+          <div id="doorWest">
+            {roomConsts.sprites['unlockedDoorWestKey1']}
+          </div>
+        )
+      } else if (door.status === 'opening') {
+        return (
+          <div id="doorWest">
+            {roomConsts.sprites['openingDoorWestKey1']}
+          </div>
+        )
+      } else if (door.status === 'closing') {
+        return (
+          <div id="doorWest">
+            {roomConsts.sprites['closingDoorWestKey1']}
+          </div>
+        )
+      } else if (door.status === 'open') {
+        return (
+          <div id="doorWest">
+          </div>
+        )
+      }; 
+    };
     if(door.isLocked === 'keyCard2') {
       if(door.status === 'closed') {
         return (

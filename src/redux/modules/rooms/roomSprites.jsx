@@ -1,9 +1,12 @@
 import React from 'react';
 
+import keyCard2Old from '../../../assets/images/items/key2Old.png';
 import eyeball from '../../../assets/images/room/eyeball.gif';
 import eyeballHurt from '../../../assets/images/room/eyeball-damage.gif';
 import tenta from '../../../assets/images/room/tenta.gif';
 import tentaHurt from '../../../assets/images/room/tenta-damage.gif';
+import tentaRise from '../../../assets/images/room/tenta-rise.gif';
+import tentaSink from '../../../assets/images/room/tenta-sink.gif';
 import ice from '../../../assets/images/room/ice.png';
 import lava from '../../../assets/images/room/lava.gif';
 import lava2 from '../../../assets/images/room/lava2.gif';
@@ -16,7 +19,9 @@ import spookyTile2 from '../../../assets/images/room/spooky-tile2.png';
 import goo from '../../../assets/images/room/goo.png';
 import pit from '../../../assets/images/room/pit.gif';
 import pit2 from '../../../assets/images/room/pit2.gif';
+import pitEmpty from '../../../assets/images/room/pit.png';
 import pitCovered from '../../../assets/images/room/pit-covered.gif';
+import pitCovered2 from '../../../assets/images/room/pit-covered.png';
 import wire from '../../../assets/images/room/wire.png';
 import fragile from '../../../assets/images/room/fragile.png';
 import fragileBreak from '../../../assets/images/room/fragile-breaking.gif';
@@ -37,13 +42,16 @@ import warpPurple from '../../../assets/images/room/warpPurple.gif';
 import warpGreen from '../../../assets/images/room/warpGreen.gif';
 import warpYellow from '../../../assets/images/room/warpYellow.gif';
 
-import core from '../../../assets/images/room/core.png';
+import core from '../../../assets/images/room/core.gif';
 
 import terminal from '../../../assets/images/room/terminal.gif';
 import terminalOff from '../../../assets/images/room/terminal-off.png';
 import spookyTerminal from '../../../assets/images/room/spooky-terminal.png';
 import terminalShock from '../../../assets/images/room/terminal-shock.gif';
 import mapTerminal from '../../../assets/images/room/map-terminal.gif';
+import powerTerminal from '../../../assets/images/room/power-terminal.png';
+import powerTerminalOn from '../../../assets/images/room/power-terminal-on.gif';
+import powerTerminalOff from '../../../assets/images/room/power-terminal-off.png';
 
 import tank1 from '../../../assets/images/room/cryoTank1.gif';
 import tank2 from '../../../assets/images/room/cryoTank2.gif';
@@ -56,6 +64,7 @@ import uglyBed1 from '../../../assets/images/room/uglyBed1.png';
 import uglyBed2 from '../../../assets/images/room/uglyBed2.png';
 import shelf from '../../../assets/images/room/shelf.png';
 
+
 import theMachine from '../../../assets/images/room/theMachine.gif';
 import theMachineOn from '../../../assets/images/room/theMachineOn.gif';
 import machineLeft from '../../../assets/images/room/machine-left.png';
@@ -66,9 +75,12 @@ import lightningRed from '../../../assets/images/room/lightningRed.gif';
 import explosion from '../../../assets/images/room/explode.png';
 
 import tube from '../../../assets/images/room/tube-monster1.gif';
-import bigTube1 from '../../../assets/images/room/big-tube1.png';
-import bigTube2 from '../../../assets/images/room/big-tube2.png';
-import bigTube3 from '../../../assets/images/room/big-tube3.png';
+import tube2 from '../../../assets/images/room/tube-monster2.gif';
+import bigTube1 from '../../../assets/images/room/big-tube1.gif';
+import bigTube2 from '../../../assets/images/room/big-tube2.gif';
+import bigTube3 from '../../../assets/images/room/big-tube3.gif';
+import bigTube2Awake from '../../../assets/images/room/big-tube2-awake.gif';
+import bigTube3Awake from '../../../assets/images/room/big-tube3-awake.gif';
 import brokenTube1 from '../../../assets/images/room/broken-tube1.png';
 import brokenTube2 from '../../../assets/images/room/broken-tube2.png';
 import brokenTube3 from '../../../assets/images/room/broken-tube3.png';
@@ -78,12 +90,14 @@ import save from '../../../assets/images/items/save.gif';
 import corner1 from '../../../assets/images/room/wall-corner1.png';
 import corner1Spooky from '../../../assets/images/room/spooky-wall-corner1.png';
 import corner2 from '../../../assets/images/room/wall-corner2.png';
+import corner2Alt from '../../../assets/images/room/wall-corner2-alt.png';
 import corner2Spooky from '../../../assets/images/room/spooky-wall-corner2.png';
 import corner3 from '../../../assets/images/room/wall-corner3.png';
 import corner3Spooky from '../../../assets/images/room/spooky-wall-corner3.png';
 import corner4 from '../../../assets/images/room/wall-corner4.png';
 import corner4Spooky from '../../../assets/images/room/spooky-wall-corner4.png';
 import innerCorner1 from '../../../assets/images/room/wall-inner-corner1.png';
+
 import innerCorner1Spooky from '../../../assets/images/room/spooky-wall-inner-corner1.png';
 import innerCorner2 from '../../../assets/images/room/wall-inner-corner2.png';
 import innerCorner2Spooky from '../../../assets/images/room/spooky-wall-inner-corner2.png';
@@ -95,12 +109,13 @@ import innerCorner4 from '../../../assets/images/room/wall-inner-corner4.png';
 import innerCorner4Spooky from '../../../assets/images/room/spooky-wall-inner-corner4.png';
 import innerCorner4Alt from '../../../assets/images/room/wall-inner-corner4-alt.png';
 import innerCorner4AltSpooky from '../../../assets/images/room/spooky-wall-inner-corner4-alt.png';
+
 import top from '../../../assets/images/room/wall-top.png';
-import topRift from '../../../assets/images/room/wall-top-rift.gif';
 import topSpooky from '../../../assets/images/room/spooky-wall-top.png';
 import brokenLeft from '../../../assets/images/room/spooky-wall-top-broken-left.png';
 import brokenRight from '../../../assets/images/room/spooky-wall-top-broken-right.png';
 import left from '../../../assets/images/room/wall-left.png';
+import leftAlt from '../../../assets/images/room/wall-left-alt.png';
 import leftSpooky from '../../../assets/images/room/spooky-wall-left.png';
 import innerLeft from '../../../assets/images/room/wall-inner-left.png';
 import innerLeftSpooky from '../../../assets/images/room/spooky-wall-inner-left.png';
@@ -111,9 +126,10 @@ import rightSpooky from '../../../assets/images/room/spooky-wall-right.png';
 import connectNE from '../../../assets/images/room/wall-connect-top-left.png';
 import connectNESpooky from '../../../assets/images/room/spooky-wall-connect-top-left.png';
 import connectNE2 from '../../../assets/images/room/wall-connect-top-left2.png';
-import connectNE2Spooky from '../../../assets/images/room/spooky-wall-connect-top-left.png';
+import connectNE2Spooky from '../../../assets/images/room/spooky-wall-connect-top-left2.png';
 import connectNW from '../../../assets/images/room/wall-connect-top-right.png';
 import connectNWSpooky from '../../../assets/images/room/spooky-wall-connect-top-right.png';
+
 import spookyMachineLeft from '../../../assets/images/room/spooky-machine-left.png';
 import spookyMachineRight from '../../../assets/images/room/spooky-machine-right.png';
 import danger from '../../../assets/images/room/danger.gif';
@@ -134,11 +150,18 @@ import phoneRing from '../../../assets/images/room/phone-ring.gif';
 import fireplace from '../../../assets/images/room/fireplace.gif';
 import books from '../../../assets/images/room/books.png';
 
-import block from '../../../assets/images/room/block.png';
+import overlayOld from '../../../assets/images/room/overlay-old.png';
+
+import blockMetal from '../../../assets/images/room/block-metal.png';
+import blockWood from '../../../assets/images/room/block-wood.png';
 import blockWarp from '../../../assets/images/room/block-warp.gif';
-import blockSink from '../../../assets/images/room/blockSink.gif';
-import blockSinkWater from '../../../assets/images/room/blockSinkWater.gif';
+import blockMetalSink from '../../../assets/images/room/block-metal-sink.gif';
+import blockWoodSink from '../../../assets/images/room/block-wood-sink.gif';
+import blockBroken from '../../../assets/images/room/block-broken.png';
+import blockBreaking from '../../../assets/images/room/block-breaking.png';
+
 import iceChunk from '../../../assets/images/room/iceChunk.png';
+import laserDrone from '../../../assets/images/room/laser-drone.gif';
 
 import switchOn from '../../../assets/images/room/switchOn.gif';
 import switchOff from '../../../assets/images/room/switchOff.png';
@@ -159,6 +182,9 @@ import closingDoorNorth from '../../../assets/images/room/door-close-north.gif';
 import unlockedKey1North from '../../../assets/images/room/door-unlocked-north-keycard1.png';
 import openingKey1North from '../../../assets/images/room/door-open-north-keycard1.gif';
 import closingKey1North from '../../../assets/images/room/door-close-north-keycard1.gif';
+import unlockedKey1West from '../../../assets/images/room/door-unlocked-west-keycard1.png';
+import openingKey1West from '../../../assets/images/room/door-open-west-keycard1.gif';
+import closingKey1West from '../../../assets/images/room/door-close-west-keycard1.gif';
 
 import lockedDoorEast from '../../../assets/images/room/door-locked-east.png';
 import unlockedDoorEast from '../../../assets/images/room/door-unlocked-east.png';
@@ -180,15 +206,20 @@ import openingKey2North from '../../../assets/images/room/door-open-north-keycar
 import closingKey2North from '../../../assets/images/room/door-close-north-keycard2.gif';
 
 const sprites = {
-  core: <img src={core} width="1200" height="300"/>,
+  keyCard2Old: <img src={keyCard2Old} width="50" height="50"/>,
+  core: <img src={core} width="350" height="250"/>,
   eyeball: <img src={eyeball} width="50" height="50"/>,
   eyeballHurt: <img src={eyeballHurt} width="50" height="50"/>,
-  tenta: <img src={tenta} width="50" height="50"/>,
-  tentaHurt: <img src={tentaHurt} width="50" height="50"/>,
+  tenta: <img src={tenta} width="55" height="60"/>,
+  tentaHurt: <img src={tentaHurt} width="55" height="60"/>,
+  tentaRise: <img src={tentaRise} width="55" height="60"/>,
+  tentaSink: <img src={tentaSink} width="55" height="60"/>,
   wire: <img src={wire} width="50" height="50"/>,
   pit: <img src={pit} width="50" height="50"/>,
   pit2: <img src={pit2} width="50" height="50"/>,
+  pitEmpty: <img src={pitEmpty} width="50" height="50"/>,
   pitCovered: <img src={pitCovered} width="50" height="50"/>,
+  pitCovered2: <img src={pitCovered2} width="50" height="50"/>,
   ice: <img src={ice} width="50" height="50"/>,
   lava: <img src={lava} width="50" height="50"/>,
   lava2: <img src={lava2} width="50" height="50"/>,
@@ -224,6 +255,9 @@ const sprites = {
   terminalShock: <img src={terminalShock} width="50" height="50"/>,
   mapTerminal: <img src={mapTerminal} width="50" height="50"/>,
   spookyTerminal: <img src={spookyTerminal} width="50" height="50"/>,
+  powerTerminal: <img src={powerTerminal} width="65" height="60"/>,
+  powerTerminalOn: <img src={powerTerminalOn} width="65" height="60"/>,
+  powerTerminalOff: <img src={powerTerminalOff} width="65" height="60"/>,
 
   tank1: <img src={tank1} width="60" height="90" />,
   tank2: <img src={tank2} width="63" height="90" />,
@@ -243,17 +277,23 @@ const sprites = {
   lightningRed: <img src={lightningRed} width="65" height="70"/>,
   explosion: <img src={explosion} width="50" height="50"/>,
   tube: <img src={tube} width="65" height="70"/>,
+  tube2: <img src={tube2} width="65" height="70"/>,
   save: <img src={save} width="70" height="70"/>,
   bigTube1: <img src={bigTube1} width="80" height="200"/>,
   bigTube2: <img src={bigTube2} width="70" height="200"/>,
   bigTube3: <img src={bigTube3} width="70" height="200"/>,
+  bigTube2Awake: <img src={bigTube2Awake} width="70" height="200"/>,
+  bigTube3Awake: <img src={bigTube3Awake} width="70" height="200"/>,
   brokenTube1: <img src={brokenTube1} width="70" height="200"/>,
   brokenTube2: <img src={brokenTube2} width="70" height="200"/>,
   brokenTube3: <img src={brokenTube3} width="70" height="200"/>,
 
+  laserDrone: <img src={laserDrone} width="100" height="65"/>,
+
   corner1: <img src={corner1} width="50" height="50"/>,
   innerCorner1: <img src={innerCorner1} width="50" height="50"/>,
   corner2: <img src={corner2} width="50" height="50"/>,
+  corner2Alt: <img src={corner2Alt} width="50" height="50"/>,
   innerCorner2: <img src={innerCorner2} width="50" height="50"/>,
   corner3: <img src={corner3} width="50" height="50"/>,
   innerCorner3: <img src={innerCorner3} width="50" height="50"/>,
@@ -262,9 +302,9 @@ const sprites = {
   innerCorner4: <img src={innerCorner4} width="50" height="50"/>,
   innerCorner4Alt: <img src={innerCorner4Alt} width="50" height="50"/>,
   top: <img src={top} width="50" height="50"/>,
-  topRift: <img src={topRift} width="50" height="50"/>,
   bottom: <img src={top} width="50" height="50"/>,
   left: <img src={left} width="50" height="50"/>,
+  leftAlt: <img src={leftAlt} width="50" height="50"/>,
   innerRight: <img src={innerRight} width="50" height="50"/>,
   innerLeft: <img src={innerLeft} width="50" height="50"/>,
   right: <img src={right} width="50" height="50"/>,
@@ -315,10 +355,16 @@ const sprites = {
   fireplace: <img src={fireplace} width="80" height="60"/>,
   books: <img src={books} width="80" height="60"/>,
 
-  block:  <img src={block} width="60" height="60"/>,
+  overlayOld: <img src={overlayOld} width="50" height="50"/>,
+
+  blockMetal:  <img src={blockMetal} width="62" height="60"/>,
+  blockWood:  <img src={blockWood} width="60" height="60"/>,
   blockWarp:  <img src={blockWarp} width="60" height="60"/>,
-  blockSink: <img src={blockSink} width="60" height="60"/>,
-  blockSinkWater: <img src={blockSinkWater} width="60" height="60"/>,
+  blockMetalSink: <img src={blockMetalSink} width="60" height="60"/>,
+  blockWoodSink: <img src={blockWoodSink} width="60" height="60"/>,
+  blockBroken: <img src={blockBroken} width="50" height="50"/>,
+  blockBreaking: <img src={blockBreaking} width="70" height="70"/>,
+ 
   iceChunk: <img src={iceChunk} width="60" height="60"/>,
 
   switchOff: <img src={switchOff} width="50" height="50"/>,
@@ -331,11 +377,11 @@ const sprites = {
   platformOffEW: <img src={platformOffEW} width="50" height="50"/>,
   platformOnEW: <img src={platformOnEW} width="50" height="50"/>,
 
-  lockedDoorNorth: <img src={lockedDoorNorth} width="50" height="40"/>,
-  unlockedDoorNorth: <img src={unlockedDoorNorth} width="50" height="40"/>,
-  openingDoorNorth: <img src={openingDoorNorth} width="50" height="40"/>,
-  openDoorNorth: <img src={openDoorNorth} width="50" height="40"/>,
-  closingDoorNorth: <img src={closingDoorNorth} width="50" height="40"/>,
+  lockedDoorNorth: <img src={lockedDoorNorth} width="50" height="47"/>,
+  unlockedDoorNorth: <img src={unlockedDoorNorth} width="50" height="47"/>,
+  openingDoorNorth: <img src={openingDoorNorth} width="50" height="47"/>,
+  openDoorNorth: <img src={openDoorNorth} width="50" height="47"/>,
+  closingDoorNorth: <img src={closingDoorNorth} width="50" height="47"/>,
 
   lockedDoorEast: <img src={lockedDoorEast} width="58" height="50"/>,
   unlockedDoorEast: <img src={unlockedDoorEast} width="58" height="50"/>,
@@ -343,15 +389,19 @@ const sprites = {
   openDoorEast: <img src={openDoorEast} width="58" height="50"/>,
   closingDoorEast: <img src={closingDoorEast} width="58" height="50"/>,
 
-  lockedDoorSouth: <img src={lockedDoorNorth} width="50" height="40"/>,
-  unlockedDoorSouth: <img src={unlockedDoorNorth} width="50" height="40"/>,
-  openingDoorSouth: <img src={openingDoorNorth} width="50" height="40"/>,
-  openDoorSouth: <img src={openDoorNorth} width="50" height="40"/>,
-  closingDoorSouth: <img src={closingDoorNorth} width="50" height="40"/>,
+  lockedDoorSouth: <img src={lockedDoorNorth} width="50" height="47"/>,
+  unlockedDoorSouth: <img src={unlockedDoorNorth} width="50" height="47"/>,
+  openingDoorSouth: <img src={openingDoorNorth} width="50" height="47"/>,
+  openDoorSouth: <img src={openDoorNorth} width="50" height="47"/>,
+  closingDoorSouth: <img src={closingDoorNorth} width="50" height="47"/>,
 
-  unlockedDoorSouthKey1: <img src={unlockedKey1North} width="50" height="40"/>,
-  openingDoorSouthKey1: <img src={openingKey1North} width="50" height="40"/>,
-  closingDoorSouthKey1: <img src={closingKey1North} width="50" height="40"/>,
+  unlockedDoorSouthKey1: <img src={unlockedKey1North} width="50" height="47"/>,
+  openingDoorSouthKey1: <img src={openingKey1North} width="50" height="47"/>,
+  closingDoorSouthKey1: <img src={closingKey1North} width="50" height="47"/>,
+  
+  unlockedDoorWestKey1: <img src={unlockedKey1West} width="58" height="50"/>,
+  openingDoorWestKey1: <img src={openingKey1West} width="58" height="50"/>,
+  closingDoorWestKey1: <img src={closingKey1West} width="58" height="50"/>,
 
   lockedDoorWest: <img src={lockedDoorWest} width="58" height="50"/>,
   unlockedDoorWest: <img src={unlockedDoorWest} width="58" height="50"/>,
@@ -362,9 +412,9 @@ const sprites = {
   unlockedDoorWestKey2: <img src={unlockedKey2West} width="58" height="50"/>,
   openingDoorWestKey2: <img src={openingKey2West} width="58" height="50"/>,
   closingDoorWestKey2: <img src={closingKey2West} width="58" height="50"/>,
-  unlockedDoorNorthKey2: <img src={unlockedKey2North} width="50" height="40"/>,
-  openingDoorNorthKey2: <img src={openingKey2North} width="50" height="40"/>,
-  closingDoorNorthKey2: <img src={closingKey2North} width="50" height="40"/>
+  unlockedDoorNorthKey2: <img src={unlockedKey2North} width="50" height="47"/>,
+  openingDoorNorthKey2: <img src={openingKey2North} width="50" height="47"/>,
+  closingDoorNorthKey2: <img src={closingKey2North} width="50" height="47"/>
 };
 
 export default sprites;

@@ -74,6 +74,14 @@ div.boss-ui-wrap {
     background: linear-gradient(0deg, rgba(99,4,4,1) 0%, rgba(255,0,0,1) 100%);
   }
 
+  .boss-beam{
+    position: absolute;
+    z-index: 500;
+    left: 35vw;
+    top: 65px;
+    height: 540px;
+  }
+
   #boss-icon {
     z-index: 1;
     position: relative;

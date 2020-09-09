@@ -45,16 +45,22 @@ function GameUITop(props) {
   } else {
     magic = props.player.magic;
   }
+  let uiClass;
+  if (props.player.items.includes('bracelet')){
+    uiClass = 'showUI';
+  } else {
+    uiClass = 'hideUI';
+  }
   return (
-    <div id="UI-wrap">
+    <div id="UI-wrap" className={uiClass}>
       <div id="UI-content">
         <div id="hp-bar">
           <label>
-            {props.player.health >= 50 ? <img id="heart-icon1" src={heart} width="50" height="50"/> : <img id="heart-icon1" src={heartless} width="50" height="50"/>} 
-            {props.player.health >= 40 ? <img id="heart-icon2" src={heart} width="50" height="50"/> : <img id="heart-icon1" src={heartless} width="50" height="50"/>} 
-            {props.player.health >= 30 ? <img id="heart-icon3" src={heart} width="50" height="50"/> : <img id="heart-icon1" src={heartless} width="50" height="50"/>} 
-            {props.player.health >= 20 ? <img id="heart-icon4" src={heart} width="50" height="50"/> : <img id="heart-icon1" src={heartless} width="50" height="50"/>} 
-            {props.player.health >= 10 ? <img id="heart-icon5" src={heart} width="50" height="50"/> : <img id="heart-icon1" src={heartless} width="50" height="50"/>} 
+            {props.player.health >= 10 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+            {props.player.health >= 20 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+            {props.player.health >= 30 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+            {props.player.health >= 40 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+            {props.player.health >= 50 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
           </label>
         </div>
         <img id="selected-items" src={selected} width="125" height="60"/>

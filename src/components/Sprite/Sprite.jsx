@@ -4,13 +4,7 @@ import './Sprite.css';
 
 function Sprite(props){
   let spriteClass;
-  if (props.squareValue == 'boss') {
-    if(props.boss.status === 'hurt'){
-      spriteClass = 'hurt-boss-sprite';
-    } else {
-      spriteClass = 'boss-sprite';
-    };
-  } else if (props.player.location === props.squareId && props.player.cloneLocation !== null && props.player.status !== 'dash') {
+if (props.player.location === props.squareId && props.player.cloneLocation !== null && props.player.status !== 'dash') {
     if(props.player.activeClone === 1) {
       spriteClass = 'split-player1';
     } else {
@@ -20,6 +14,10 @@ function Sprite(props){
     spriteClass = 'dark-sprite';
   } else if (props.roomId === 3 && props.squareId === 67 && props.special === true){
     spriteClass = 'background-sprite';
+  } else if((props.branch === 2 && props.roomId === 3 || props.branch === 3 && props.roomId === 5) && props.squareValue === 'T' && props.squareId === 24){
+    spriteClass = 'item';
+  } else if(props.squareValue === 'Lzr'){
+    spriteClass = 'drone-sprite';
   } else {
     spriteClass = 'sprite';
   };

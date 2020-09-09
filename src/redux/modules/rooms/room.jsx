@@ -6,6 +6,7 @@ export const ADD_SQUARE = "ADD_SQUARE";
 export const UPDATE_CONTENT = "UPDATE_CONTENT";
 export const UPDATE_VALUE = "UPDATE_VALUE";
 export const UPDATE_SPRITE = "UPDATE_SPRITE";
+export const UPDATE_EMOTE = "UPDATE_EMOTE";
 export const UPDATE_TRANSITION = "UPDATE_TRANSITION";
 export const TOGGLE_ALERT = "TOGGLE_ALERT";
 export const SET_EXPLOSION = "SET_EXPLOSION";
@@ -19,7 +20,7 @@ export function nullRoom() {
     type: NULL_ROOM,
   };
 }
-export function addSquare(newSquareId, newValue, newContent, newTileImage, newSprite, newTransition, alertBool, explosion = null, warning = false, shatter = 'none', newTileOverlay = 'none') {
+export function addSquare(newSquareId, newValue, newContent, newTileImage, newSprite, newTransition, alertBool, explosion = null, warning = false, shatter = 'none', newTileOverlay = 'none', newEmote = null) {
   return {
     type: ADD_SQUARE,
     squareId: newSquareId,
@@ -27,6 +28,7 @@ export function addSquare(newSquareId, newValue, newContent, newTileImage, newSp
     content: newContent,
     tileImage: newTileImage,
     sprite: newSprite,
+    emote: newEmote,
     transition: newTransition,
     alert: alertBool,
     explosion: explosion,
@@ -47,6 +49,13 @@ export function updateSprite(squareIdToUpdate, newSprite) {
     type: UPDATE_SPRITE,
     squareId: squareIdToUpdate,
     sprite: newSprite
+  };
+}
+export function updateEmote(squareIdToUpdate, newEmote) {
+  return {
+    type: UPDATE_EMOTE,
+    squareId: squareIdToUpdate,
+    emote: newEmote
   };
 }
 export function updateTransition(squareIdToUpdate, newTransition) {
@@ -110,7 +119,7 @@ export function setTileOverlay(squareId, tileOverlay){
 const roomReducer = (state = {}, action) => {
   let newState;
   let newSquare;
-  const { squareId, value, content, tileImage, sprite, transition, alert, explosion, warning, shatter, tileOverlay} = action;
+  const { squareId, value, content, tileImage, sprite, emote, transition, alert, explosion, warning, shatter, tileOverlay} = action;
 
   switch (action.type) {
     case NULL_ROOM:
@@ -124,6 +133,7 @@ const roomReducer = (state = {}, action) => {
             content: content,
             tileImage: tileImage,
             sprite: sprite,
+            emote: emote,
             transition: transition,
             alert: alert,
             explosion: explosion,
@@ -147,6 +157,12 @@ const roomReducer = (state = {}, action) => {
         return newState;
     case UPDATE_SPRITE:
       newSquare = Object.assign({}, state[squareId], {sprite});
+      newState = Object.assign({}, state, {
+        [squareId]: newSquare
+      });
+        return newState;
+    case UPDATE_EMOTE:
+      newSquare = Object.assign({}, state[squareId], {emote});
       newState = Object.assign({}, state, {
         [squareId]: newSquare
       });

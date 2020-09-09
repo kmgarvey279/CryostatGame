@@ -16,6 +16,7 @@ function CurrentRoom(props){
           squareId={parseInt(squareId)}
           tileImage={square.tileImage}
           sprite={square.sprite}
+          emote={square.emote}
           transition={square.transition}
           alert={square.alert}
           explosion={square.explosion}
@@ -27,7 +28,8 @@ function CurrentRoom(props){
           doors={props.doors}
           eye={props.game.eye}
           npcs={props.npcs}
-          game={props.game}/>
+          game={props.game}
+          projectiles={props.projectiles}/>
         </div>;
       })};
     </div>
@@ -40,7 +42,8 @@ CurrentRoom.propTypes = {
   player: PropTypes.object,
   boss: PropTypes.object,
   doors: PropTypes.object,
-  npcs: PropTypes.object
+  npcs: PropTypes.object,
+  projectiles: PropTypes.object
 };
 
 export default CurrentRoom;

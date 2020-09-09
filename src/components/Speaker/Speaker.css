@@ -1,33 +1,60 @@
 
 #speaker-text {
   padding: 2px;
-  font-size: 18px;
+  font-size: 25px;
+  padding-left: 10px;
+  top: -4px;
+  position: relative;
 }
 
 .claire-speaker{
   position: relative;
   height: 25px;
   min-width: 50px;
-  width: 180px;
+  width: 240px;
   z-index: 2000;
   overflow:visible;
   top: -10px;
-  left: -10px;
-  opacity: 0.9;
+  left: -30px;
   border: solid purple;
   background-color: darkorchid;
+}
+
+.mutiny-speaker{
+  position: relative;
+  height: 25px;
+  min-width: 50px;
+  width: 240px;
+  z-index: 2000;
+  overflow:visible;
+  top: -10px;
+  left: -30px;
+  opacity: 0.9;
+  border: solid navy  !important;
+  background-color: slateblue !important;
 }
 
 .default-speaker{
   position: relative;
   height: 25px;
   min-width: 50px;
-  width: 200px;
+  width: 240px;
   z-index: 2000;
   overflow:visible;
   top: -10px;
-  left: -10px;
+  left: -30px;
   opacity: 0.9;
   background-color:yellow; 
   border: 3px solid darkorange; 
+}
+
+.claire-portrait {
+  top: -32.5px;
+  left: 38vw;
+  position: absolute;
+}
+.young-lucy-portrait {
+  top: -42.5px;
+  left: 35vw;
+  position: absolute;
 }

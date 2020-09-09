@@ -51,14 +51,14 @@ class Options extends React.Component {
   render(){
     if (this.props.menu.selectedOption == 1) {
       return (
-        <div>
+        <div className="options-wrap">
           <div id="selectedOption">{this.props.text.options[0]}</div>
           {this.props.text.options[1]}
         </div>
       );
     } else {
       return (
-        <div>
+        <div className="options-wrap">
           {this.props.text.options[0]}
           <div id="selectedOption">{this.props.text.options[1]}</div>
         </div>

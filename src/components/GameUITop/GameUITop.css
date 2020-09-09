@@ -21,6 +21,10 @@ div#UI-content {
   left: -18px;
 }
 
+.hideUI {
+  display: none;
+}
+
 #weapon {
   position: absolute;
   left: 0;

@@ -7,17 +7,48 @@ div#wrap {
   height: 100%;
   padding-top: 10%;
   overflow: auto;
+  text-align: left;
+}
+
+.progress-container{
+  padding-top: 5px;
+  width: 97%;
+}
+
+.exit-text {
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0%  {color: red;}
+  25%  {color: darkred;}
+  50%  {color: red;}
+  75%  {color: darkred;}
+  100%  {color: red;}
+}
+
+
+.progress-background{
+  height: 40px;
+  width: 97%;
+  background: rgb(0,0,3);
+  background: linear-gradient(0deg, rgba(0,0,3,1) 0%, rgba(51,1,69,1) 100%);
+  display: inline-block;
+  z-index: 0;
+  position: relative;
+  top: -40px;
+  border-radius: 10px;
 }
 
 div#box-content {
   background-color:DarkOrange; 
   border: 3px solid GoldenRod; 
-  width: 45%;
-  min-width: 400px;
-  height: 100px;
-  opacity: 0.9;
+  width: 50%;
+  min-width: 500px;
+  height: 180px;
   margin: 10% auto;
-  margin-top: 480px;
+  margin-top: 420px;
+  padding-left: 15px;
 }
 
 div.special {
@@ -36,20 +67,20 @@ div.special {
 div#text-options {
   position: relative;
   margin-top: 20px;
-  font-size: 21px;
+  font-size: 25px;
 }
 
 div#text{
   position: relative;
   margin-top: 20px;
-  font-size: 21px;
+  font-size: 25px;
 }
 
 div#dialogueText {
   position: relative;
   top: -10px;
-  margin-top: 10px;
-  font-size: 23px;
+  margin-top: 5px;
+  font-size: 25px;
 }
 
 .next-button-prompt {
@@ -69,9 +100,9 @@ div#dialogueText {
   background-color: plum !important;
 }
 
-.ghost-color{
-  border: solid mediumseagreen !important;
-  background-color: darkseagreen !important;
+.mutiny-color{
+  border: solid navy  !important;
+  background-color: cornflowerblue !important;
 }
 
 .dark-color{

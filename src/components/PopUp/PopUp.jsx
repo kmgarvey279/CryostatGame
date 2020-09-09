@@ -12,7 +12,7 @@ function PopUp(props){
     } else if (props.popUp === 3) {
         message = <span id="popup-text">Use <span className="popup-button-prompt">Q</span> to switch weapons.</span>
     } else if (props.popUp === 4) {
-        message = <span id="popup-text">Use <span className="popup-button-prompt">Enter</span> to view the map.</span>
+        message = <span id="popup-text">Use <span className="popup-button-prompt">Enter</span> to open the menu.</span>
     } else if (props.popUp === 5) {
         message = <span id="popup-text">Level 1 Security Access Required</span>
         thisClass = 'key1';

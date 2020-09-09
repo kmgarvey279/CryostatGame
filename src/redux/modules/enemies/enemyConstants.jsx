@@ -36,10 +36,10 @@ export const sprites = {
   },
   boss: {
     move: {
-      north: <img id="player" src={bossNorth} width="300" height="300"/>,
-      east: <img id="player" src={bossEast} width="300" height="300"/>,
-      south: <img id="player" src={bossSouth} width="300" height="300"/>,
-      west: <img id="player" src={bossWest} width="300" height="300"/>
+      north: <img id="player" src={bossNorth} width="400" height="300"/>,
+      east: <img id="player" src={bossEast} width="400" height="300"/>,
+      south: <img id="player" src={bossSouth} width="400" height="300"/>,
+      west: <img id="player" src={bossWest} width="400" height="300"/>
     }
   }
 };
@@ -48,7 +48,7 @@ export const enemies = {
   slime: {
     kind: 'Slime',
     sprites: sprites['slime'],
-    health: 40
+    health: 20
   },
   robot: {
     kind: 'Robot',

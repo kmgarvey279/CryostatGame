@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BossUI.css';
 import bossBar from '../../assets/images/items/boss-bar.png';
+import bossBeam from '../../assets/images/items/boss-beam.gif';
 
 function BossUI(props){
     let titles = props.boss.titles;
@@ -28,6 +29,7 @@ function BossUI(props){
             </div>
         </div>
     };
+    let beam;
     if (props.boss.status === 'normal' || props.boss.status === 'hurt'){
         let health = props.boss.health;
         let barColor;

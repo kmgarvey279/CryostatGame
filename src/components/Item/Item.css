@@ -1,4 +1,4 @@
-div#item {
+div.item {
   z-index: 500;
   position: absolute;
   bottom: 5px;

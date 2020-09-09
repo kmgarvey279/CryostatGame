@@ -44,22 +44,6 @@ img#branch-exit-2 {
   z-index: 1;
 }
 
-div.file {
-  border-radius: 5px;
-  display: inline-block;
-  height: 60px;
-  width: 50%;
-  margin: 15px;
-  color: black;
-  background: rgb(35,170,173);
-  background: linear-gradient(0deg, rgba(35,170,173,1) 0%, rgba(77,80,128,1) 100%);
-  text-align: left;
-  padding: 10px;
-  position: relative;
-  z-index: 2;
-  box-shadow: 5px 5px 5px #aaaaaa
-}
-
 div.file#selectedFile {
   border: solid white 1px;
   background: rgb(255,255,255);

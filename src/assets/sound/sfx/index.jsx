@@ -44,6 +44,10 @@ import glitch from './glitch-computer.mp3';
 import noMP from './krank_sounds/industry/magnet_start.wav';
 import crack from './bfh1_glass_hit_01.ogg';
 import shatter from './bfh1_glass_falling_04.ogg';
+import shock from './qubodupElectricityDamage02.flac';
+import freeze from './qubodupIceDamage01.flac';
+import bell from './sd_0.wav';
+import codec from './square_partyjoin.ogg';
 
 const effects = {
   shot: shot,
@@ -91,7 +95,11 @@ const effects = {
   glitch: glitch,
   noMPL: noMP,
   crack: crack,
-  shatter: shatter
+  shatter: shatter,
+  shock: shock,
+  freeze: freeze,
+  bell: bell,
+  codec: codec
 };
 
 export default effects

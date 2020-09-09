@@ -138,6 +138,11 @@
     z-index: 1;
 }
 
+.bracelet {
+    margin-left: 4px;
+    margin-top: 3px;
+}
+
 .health-list {
     list-style: none;
     display: flex;

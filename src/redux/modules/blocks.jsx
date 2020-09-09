@@ -7,11 +7,12 @@ export const NULL_ALL_BLOCKS = "NULL_ALL_BLOCKS";
 export const UPDATE_BLOCK_LOCATION = "UPDATE_BLOCK_LOCATION";
 
 //Action Creators
-export function createBlock(blockId, location) {
+export function createBlock(blockId, location, kind) {
   return {
     type: CREATE_BLOCK,
     blockId: blockId,
-    location: location
+    location: location,
+    kind: kind
   }
 }
 
@@ -42,14 +43,15 @@ export function nullAllBlock() {
 const blockReducer = (state = {}, action) => {
   let newState;
   let newBlock;
-  const { blockId, location } = action;
+  const { blockId, location, kind } = action;
 
   switch (action.type) {
     case CREATE_BLOCK:
       newState = Object.assign({}, state, {
         [blockId]: {
           blockId: blockId,
-          location: location
+          location: location,
+          kind: kind
         }
       });
       return newState;

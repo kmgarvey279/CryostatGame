@@ -26,3 +26,7 @@ ecofuture soneproject (freesound.org)
 game over: extenz (opengameart)
 charge: plasterbrain (freesound.org)
 glitch effect: TheMinkman
+electricity/ice: Iwan 'qubodup' Gabovitch (opengameart)
+baseline2: Spring (OGA) 
+point bell: HaelDB/Brandon75689 (OGA)
+through space: maxstack (oga)

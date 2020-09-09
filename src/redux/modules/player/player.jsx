@@ -136,7 +136,7 @@ export function upgradeCryostat(){
 
 //Initial State
 const initialState = {
-    name: 'Claire',
+    name: '???',
     health: 50,
     entanglement: 0,
     magic: 0,

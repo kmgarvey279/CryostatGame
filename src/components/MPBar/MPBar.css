@@ -64,4 +64,5 @@ div.entanglement-bar {
     z-index: 0;
     position: relative;
     top: -40px;
+    border-radius: 10px;
 }

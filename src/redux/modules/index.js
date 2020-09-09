@@ -14,6 +14,7 @@ import soundsReducer from './sounds';
 import savesReducer from './save-data';
 import bossReducer from './boss/boss';
 import npcsReducer from './npcs/npcs';
+import projectilesReducer from './projectiles';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
@@ -32,7 +33,8 @@ const rootReducer = combineReducers({
   sounds: soundsReducer,
   saves: savesReducer,
   boss: bossReducer,
-  npcs: npcsReducer
+  npcs: npcsReducer,
+  projectiles: projectilesReducer
 });
 
 export default rootReducer;
