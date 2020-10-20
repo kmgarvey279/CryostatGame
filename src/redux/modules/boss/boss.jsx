@@ -1,9 +1,11 @@
 
 //Constants
+export const UPDATE_BOSS_KIND = "UPDATE_BOSS_KIND";
 export const UPDATE_BOSS_NAME = "UPDATE_BOSS_NAME";
 export const UPDATE_BOSS_TITLES = "UPDATE_BOSS_TITLES";
 export const UPDATE_BOSS_STATUS = "UPDATE_BOSS_STATUS";
-export const UPDATE_BOSS_LOCATION = "UPDATE_ENEMY_LOCATION";
+export const UPDATE_BOSS_LOCATION = "UPDATE_BOSS_LOCATION";
+export const UPDATE_BOSS_DIRECTION = "UPDATE_BOSS_DIRECTION";
 export const UPDATE_BOSS_HEALTH = "UPDATE_ENEMY_HEALTH";
 export const UPDATE_TILE_ARRAY = "UPDATE_TILE_ARRAY";
 export const UPDATE_BOSS_ATTACK = "UPDATE_BOSS_ATTACK";
@@ -14,6 +16,13 @@ export function updateBossName(newName) {
     return {
       type: UPDATE_BOSS_NAME,
       name: newName,
+    }
+  }
+
+  export function updateBossKind(newKind) {
+    return {
+      type: UPDATE_BOSS_KIND,
+      kind: newKind,
     }
   }
 
@@ -28,6 +37,13 @@ export function updateBossLocation(newLocation) {
   return {
     type: UPDATE_BOSS_LOCATION,
     location: newLocation,
+  }
+}
+
+export function updateBossDirection(newDirection) {
+  return {
+    type: UPDATE_BOSS_DIRECTION,
+    direction: newDirection,
   }
 }
 
@@ -70,11 +86,13 @@ export function updateTileArray(newArray) {
 
 //Initial State
 const initialState = {
-    status: 'none',
+    status: null,
     location: 0,
-    health: 600,
-    tileArr: [46, 47, 58, 59, 60, 71, 72, 73, 84, 85, 86, 97, 98, 99, 111, 112],
+    direction: 'south',
+    health: '',
+    tileArr: [],
     name: '',
+    kind: '',
     titles: [],
     attack: false,
     beam: null
@@ -83,13 +101,18 @@ const initialState = {
 //Reducer
 const bossReducer = (state = initialState, action) => {
   let newState;
-  const { name, titles, status, location, health, tileArr, attack, beam} = action;
+  const { name, kind, titles, status, location, direction, health, tileArr, attack, beam} = action;
   switch (action.type) {
         case UPDATE_BOSS_NAME:
             newState = Object.assign({}, state, {
               name: name
             });
             return newState;
+        case UPDATE_BOSS_KIND:
+          newState = Object.assign({}, state, {
+            kind: kind
+          });
+          return newState;
         case UPDATE_BOSS_TITLES:
             newState = Object.assign({}, state, {
                 titles: titles
@@ -105,6 +128,11 @@ const bossReducer = (state = initialState, action) => {
               location: location,
             });
             return newState;
+        case UPDATE_BOSS_DIRECTION:
+          newState = Object.assign({}, state, {
+            direction: direction,
+          });
+          return newState;
         case UPDATE_BOSS_HEALTH:
             newState = Object.assign({}, state, {
               health: health

@@ -20,6 +20,11 @@ function Filter(props){
       <div id="powerOff">
       </div>
     );
+  } else if(props.filter === 'frost') {
+    return (
+      <div id="frost">
+      </div>
+    );
   } else if (props.branch === 1){
     return (
       <div id="old">

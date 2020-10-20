@@ -30,7 +30,7 @@ function BossUI(props){
         </div>
     };
     let beam;
-    if (props.boss.status === 'normal' || props.boss.status === 'hurt'){
+    if (props.boss.status !== null){
         let health = props.boss.health;
         let barColor;
         if(props.boss.health > 400){
@@ -43,6 +43,7 @@ function BossUI(props){
             return (
                 <div className="boss-ui-wrap">
                     <div className="boss-health-container">
+                        <span className="boss-health-label">props.boss.kind</span>
                         <div className="bar-background"></div>
                         <div className="boss-health-bar" id={barColor} style={{width: health}}>
                         </div>

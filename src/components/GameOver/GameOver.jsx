@@ -6,7 +6,6 @@ import * as playerModule from '../../redux/modules/player/player';
 import {bindActionCreators} from 'redux';
 import { withRouter } from 'react-router-dom';
 import './GameOver.css';
-import branchEnd from '../../assets/images/menu/branch-end.png';
 
 class GameOver extends React.Component {
   constructor(props) {

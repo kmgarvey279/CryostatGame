@@ -17,7 +17,7 @@ class Title extends React.Component {
   render() {
     return (
       <div className="title">
-          <h1>CHRONOSTAT</h1>
+          <h1>Retrograde</h1>
           <h5>Press <span className="button-prompt">Space</span> / <span className="button-prompt">Enter</span> to Start</h5>
       </div>
     );

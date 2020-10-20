@@ -1,6 +1,4 @@
 import React from 'react';
-import robotOff from '../../../assets/images/npc/robot-off.gif';
-import robotOnSouth from '../../../assets/images/npc/robot-on-south.gif';
 import blaineStandSouth from '../../../assets/images/npc/blaine-front.gif';
 import blaineStandNorth from '../../../assets/images/npc/blaine-back.gif';
 import blaineDoor from '../../../assets/images/npc/blaine-door.gif';
@@ -12,6 +10,10 @@ import mutinyStandSouth from '../../../assets/images/npc/mutiny-stand-south.gif'
 import mutinyTroll from '../../../assets/images/npc/mutiny-troll.gif'
 import mutinyConfused from '../../../assets/images/npc/mutiny-confused.gif'
 import lucyStandSouth from '../../../assets/images/npc/lucy-stand-south.gif';
+import youngLucyStandSouth from '../../../assets/images/npc/lucy-young-south.gif';
+import youngLucyStandNorth from '../../../assets/images/npc/lucy-young-north.gif';
+import youngLucyStandWest from '../../../assets/images/npc/lucy-young-west.gif';
+import youngLucyStandEast from '../../../assets/images/npc/lucy-young-east.gif';
 
 const sprites = {
     blaine: {
@@ -27,20 +29,20 @@ const sprites = {
             opened: <img className="blaine-door-sprite" src={blaineDoorOpened} width="115" height="95"/>,
         }
     },
-    robot: {
-        off: {
-            south: <img src={robotOff} width="85" height="90"/>
-        },
-        on: {
-            south: <img src={robotOnSouth} width="85" height="90"/>
-        }
-    },
     mutiny: {
         stand: {
-            south: <img src={mutinyStandSouth} width="80" height="90"/>,
+            south: <img id="mutiny-sprite" src={mutinyStandSouth} width="80" height="90"/>,
         },
         confused: <img src={mutinyConfused} width="80" height="90"/>,
         troll: <img src={mutinyTroll} width="80" height="90"/>
+    },
+    lucyYoung: {
+        stand: {
+            south: <img id="young-lucy-sprite" src={youngLucyStandSouth} width="52" height="70"/>,
+            north: <img id="young-lucy-sprite" src={youngLucyStandNorth} width="52" height="70"/>,
+            east: <img id="young-lucy-sprite" src={youngLucyStandEast} width="52" height="70"/>,
+            west: <img id="young-lucy-sprite" src={youngLucyStandWest} width="52" height="70"/>
+        }
     },
     lucyStandSouth: <img src={lucyStandSouth} width="80" height="80"/>
 }

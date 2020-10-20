@@ -16,13 +16,20 @@ function MapRoom(props){
         <div id='door1' className='standard-door'></div>
         <div id='door2'></div>
         <div id='door3'></div>
+        <div id='door4' className='standard-door'></div>
+      </div>
+    } else if (props.roomId === 'hallway1') {
+      doors = <div>
+        <div id='door1' className='standard-door'></div>
+        <div id='door2'></div>
+        <div id='door3'></div>
         <div id='door4'></div>
       </div>
     } else if (props.roomId === 2) {
       doors = <div>
         <div id='door1' className='standard-door'></div>
-        <div id='door2'></div>
-        <div id='door3'></div>
+        <div id='door2' className='standard-door'></div>
+        <div id='door3' className='standard-door'></div>
         <div id='door4' className='standard-door'></div>
       </div>
     } else if (props.roomId === 3) {
@@ -30,18 +37,18 @@ function MapRoom(props){
         <div id='door1' className='standard-door'></div>
         <div id='door2'></div>
         <div id='door3'></div>
-        <div id='door4'></div>
+        <div id='door4' className='standard-door'></div>
       </div>
     } else if (props.roomId === 4) {
       doors = <div>
-        <div id='door1'></div>
+        <div id='door1' className='standard-door'></div>
         <div id='door2'></div>
-        <div id='door3'></div>
+        <div id='door3' className='standard-door'></div>
         <div id='door4' className='keycard2-door'></div>
       </div>
-    } else if (props.roomId === 'hallway1') {
+    } else if (props.roomId === 'hallway2') {
       doors = <div> 
-        <div id='door1'></div>
+        <div id='door1' className='standard-door'></div>
         <div id='door2'></div>
         <div id='door3'></div>
         <div id='door4'></div>
@@ -57,7 +64,7 @@ function MapRoom(props){
       doors = <div>
         <div id='door1' className='standard-door'></div>
         <div id='door2'></div>
-        <div id='door3'></div>
+        <div id='door3' className='standard-door'></div>
         <div id='door4'></div>
       </div>
     } else if (props.roomId === 7) {
@@ -65,11 +72,25 @@ function MapRoom(props){
         <div id='door1' className='keycard2-door'></div>
         <div id='door2'></div>
         <div id='door3'></div>
-        <div id='door4' className='keycard2-door'></div>
+        <div id='door4'></div>
       </div>
     } else if (props.roomId === 8) {
       doors = <div>
-        <div id='door1' className='standard-door'></div>
+        <div id='door1'></div>
+        <div id='door2'></div>
+        <div id='door3'></div>
+        <div id='door4'></div>
+      </div>
+    } else if (props.roomId === 9) {
+      doors = <div>
+        <div id='door1'></div>
+        <div id='door2'></div>
+        <div id='door3'></div>
+        <div id='door4'></div>
+      </div>
+    } else if (props.roomId === 10) {
+      doors = <div>
+        <div id='door1'></div>
         <div id='door2'></div>
         <div id='door3'></div>
         <div id='door4'></div>

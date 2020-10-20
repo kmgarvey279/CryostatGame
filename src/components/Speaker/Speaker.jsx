@@ -14,9 +14,10 @@ function Speaker(props){
     color = 'default-speaker';
   } else if (props.speaker === 'Claire'){
     color = 'claire-speaker';
-    portrait = <img src={clairePortrait} height="220" width="230" className="claire-portrait"/>
-  } else if (props.speaker === 'Spikey Haired Girl' || props.speaker === 'Mutiny' || props.speaker === 'Intercom'){
+    portrait = <img src={clairePortrait} height="200" width="210" className="claire-portrait"/>
+  } else if (props.speaker === 'Spikey Haired Girl' || props.speaker === 'Mutiny'){
     color = 'mutiny-speaker';
+    portrait = <img src={mutinyPortrait} height="200" width="210" className="claire-portrait"/>
   };
   return (
     <div className={color}>

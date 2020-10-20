@@ -8,7 +8,6 @@ function MPBar(props) {
   return (
     <div className="bar-container">
       <div className="entanglement-bar" style={{width: magic}}>
-          <span id="particle-effect"><img src={playerParticleEast} width="160px" height="80px"/></span>
       </div>
       <span id="bar-background"></span>
     </div>

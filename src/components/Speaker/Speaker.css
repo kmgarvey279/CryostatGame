@@ -1,7 +1,7 @@
 
 #speaker-text {
   padding: 2px;
-  font-size: 25px;
+  font-size: 27px;
   padding-left: 10px;
   top: -4px;
   position: relative;
@@ -9,7 +9,7 @@
 
 .claire-speaker{
   position: relative;
-  height: 25px;
+  height: 26px;
   min-width: 50px;
   width: 240px;
   z-index: 2000;
@@ -22,7 +22,7 @@
 
 .mutiny-speaker{
   position: relative;
-  height: 25px;
+  height: 26px;
   min-width: 50px;
   width: 240px;
   z-index: 2000;
@@ -36,7 +36,7 @@
 
 .default-speaker{
   position: relative;
-  height: 25px;
+  height: 26px;
   min-width: 50px;
   width: 240px;
   z-index: 2000;
@@ -49,8 +49,8 @@
 }
 
 .claire-portrait {
-  top: -32.5px;
-  left: 38vw;
+  top: -12.5px;
+  left: 550px;
   position: absolute;
 }
 .young-lucy-portrait {

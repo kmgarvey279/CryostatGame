@@ -45,10 +45,14 @@
   100%  {transform: scale(1.0); opacity: 1.0;}
 }
 
+.square {
+  z-index: 1;
+  position: relative;
+}
 
 #alert{
   z-index: 500;
-  left: 1px;
+  left: 4px;
   position: absolute;
   opacity: 0.6;
   bottom: 110px;
@@ -68,12 +72,53 @@
   animation-duration: 2s;
 }
 
+.pipe-south {
+  z-index: 100;
+  left: -20px;
+  top: -100px;
+  position: absolute;
+  bottom: 110px;
+}
+
+.pipe-north {
+  z-index: 50;
+  left: -25px;
+  top: -20px;
+  position: absolute;
+  bottom: 110px;
+}
+
+.pipe-east {
+  z-index: 10;
+  left: -50px;
+  top: -85px;
+  position: absolute;
+  bottom: 110px;
+}
+
+.pipe-west {
+  z-index: 50;
+  left: 5px;
+  top: -85px;
+  position: absolute;
+  bottom: 110px;
+}
+
 #filter-old {
   height: 50px;
   width: 50px;
   position: absolute;
   display: block;
-  z-index: 9;
+  z-index: 11;
+}
+
+#filter-old-door {
+  bottom: -4px;
+  height: 20px;
+  width: 50px;
+  position: absolute;
+  display: block;
+  z-index: 11;
 }
 
 #filter-old-fill {
@@ -93,6 +138,11 @@
 #filter-old-texture2 {
   opacity: 0.4;
   transform: scaleX(-1);
+}
+
+#filter-old-texture3 {
+  opacity: 0.4;
+  transform: scaleY(-1);
 }
 
 .gradient {
@@ -134,13 +184,39 @@ div#lava {
   animation-duration: 5s;
 }
 
+.logo {
+  z-index: 50;
+  position: absolute;
+  top: -150px;
+  left: -280px;
+  display: block;
+  width: 50px;
+  height: 75px;
+  opacity: 0.7;
+
+}
+
+.lava-steam {
+  z-index: 50;
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 75px;
+  opacity: 0.6;
+
+}
+
 div#lava-cool {
   z-index: 10;
   position: absolute;
   display: block;
   width: 50px;
   height: 50px;
-  opacity: 0.9;
+}
+
+.empty-tile {
+  height: 54px;
+  width: 54px;
 }
 
 div.special-tile {
@@ -153,6 +229,105 @@ div.special-tile {
   animation-iteration-count:infinite;
   animation-name: special;
   animation-duration: 5s;
+}
+
+.bullet-north{
+  animation-name: bulletNorth;
+  animation-duration: 500ms;
+  top: -25px;
+  left: -15px;
+}
+@keyframes bulletNorth {
+  0%  {top: 1px;}
+  100%  {top: -25px;}
+}
+
+.bullet-south{
+  animation-name: bulletSouth;
+  animation-duration: 500ms;
+  bottom: -12px;
+  left: -15px;
+}
+@keyframes bulletSouth {
+  0%  {bottom: 25px;}
+  100%  {bottom: -12px;}
+}
+
+.bullet-east{
+  animation-name: bulletEast;
+  animation-duration: 500ms;
+  left: -1px;
+}
+@keyframes bulletWest {
+  0%  {right: 1px;}
+  100%  {right: 25px;}
+}
+
+.bullet-west{
+  animation-name: bulletWest;
+  animation-duration: 500ms;
+  right: 25px;
+}
+@keyframes bulletEast {
+  0%  {left: -25px;}
+  100%  {left: -1px;}
+}
+
+.bullet-northWest{
+  animation-name: bulletNorthWest;
+  animation-duration: 500ms;
+  bottom: 24px;
+  left: -29px;
+}
+@keyframes bulletNorthWest {
+  0% {bottom: -10px; left: -2px;}
+  100% {bottom: 24px; left: -29px;}
+}
+
+.bullet-southWest{
+  animation-name: bulletSouthWest;
+  animation-duration: 500ms;
+  left: -28px;
+  top: 12px;
+}
+@keyframes bulletSouthWest {
+  0% {left: -3px; top: -15px;}
+  100% {  left: -28px; top: 12px;}
+}
+
+.bullet-northEast{
+  animation-name: bulletNorthEast;
+  animation-duration: 500ms;
+  left: -3px;
+  bottom: 24px;
+}
+@keyframes bulletNorthEast {
+  0% {left: -25px; bottom: -10px;}
+  100% {  left: -3px; bottom: 24px;}
+}
+
+.bullet-southEast{
+  animation-name: bulletSouthEast;
+  animation-duration: 500ms;
+  left: -1px;
+  top: 12px;
+}
+@keyframes bulletSouthEast {
+  0% {left: -25px; top: -15px;}
+  100% { left: -1px; top: 12px;}
+}
+
+
+
+
+
+
+
+
+
+
+.bullet-south{
+
 }
 
 @keyframes special {
@@ -178,7 +353,6 @@ div#tile-overlay {
   z-index: 10;
   position: absolute;
   display: block;
-  opacity: 1;
 }
 
 div#lightning {
@@ -188,20 +362,26 @@ div#lightning {
   opacity: 0.8;
 }
 
+.boss-laser-v {
+  z-index: 500;
+  position: absolute;
+  display: block;
+  left: 1.5px;
+  top: 3px;
+}
+
 .laser-v {
   z-index: 500;
   position: absolute;
   display: block;
-  opacity: 0.9;
-  left: 5px;
+  left: 1.5px;
 }
 
 .laser-h {
   z-index: 500;
   position: absolute;
-  display: block;
-  opacity: 0.9;
   bottom: 15px;
+  left: 0px;
 }
 
 .boss-beam{
@@ -309,6 +489,13 @@ div#lightning {
   left: -5px;
 }
 
+.bullet{
+  z-index: 150;
+  position: absolute;
+  bottom: 15px;
+  right: -10px;
+}
+
 div#breaking-block {
   top: -10px;
   left: -5px;
@@ -340,7 +527,6 @@ div#implosion {
 
 #clone2 {
   opacity: 0.8;
-  filter: hue-rotate(150deg);
   z-index: 100;
   position: absolute;
   bottom: 15px;
@@ -350,12 +536,21 @@ div#implosion {
 
 #clone1 {
   opacity: 0.8;
-  filter: hue-rotate(300deg);
   z-index: 100;
   position: absolute;
   bottom: 15px;
   right: -13px;
   break-inside: avoid;
+}
+
+.clone-aura {
+  position: absolute;
+  top: -45px;
+  left: -15px;
+  opacity: 1;
+  z-index: 100;
+  opacity: 0.8;
+
 }
 
 .shadow-player {
@@ -366,7 +561,7 @@ div#implosion {
   opacity: 40%;
   z-index: 50;
   position: absolute;
-  right: 13px;
+  right: 10px;
   bottom: 20px;
 }
 
@@ -392,6 +587,18 @@ div#implosion {
   position: absolute;
   right: 2px;
   bottom: 20px;
+}
+
+.shadow-high {
+  height: 20px;
+  width: 45px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 30px;
 }
 
 .machine-shadow {
@@ -420,7 +627,7 @@ div#implosion {
 
 .shadow-last {
   height: 20px;
-  width: 50px;
+  width: 47px;
   border-radius: 0 12px 12px 0;
   background-color: black;
   opacity: 40%;
@@ -438,7 +645,7 @@ div#implosion {
   opacity: 40%;
   z-index: 50;
   position: absolute;
-  right: 3px;
+  right: 0px;
   bottom: 20px;
 }
 
@@ -456,13 +663,13 @@ div#implosion {
 
 .big-shadow-first {
   height: 50px;
-  width: 45px;
+  width: 46px;
   border-radius: 0 0 0 50px;
   background-color: black;
   opacity: 40%;
   z-index: 50;
   position: absolute;
-  right: 3px;
+  right: 2px;
   bottom: 20px;
 }
 
@@ -473,13 +680,13 @@ div#implosion {
   opacity: 40%;
   z-index: 50;
   position: absolute;
-  right: 0;
+  right: -3px;
   bottom: 20px;
 }
 
 .big-shadow-last {
   height: 50px;
-  width: 45px;
+  width: 47px;
   border-radius: 0 0 50px 0;
   background-color: black;
   opacity: 40%;
@@ -497,8 +704,8 @@ div#implosion {
   opacity: 40%;
   z-index: 50;
   position: absolute;
-  right: 7px;
-  bottom: 25px;
+  right: 9px;
+  bottom: 22px;
 }
 
 .firelight {
@@ -511,4 +718,206 @@ div#implosion {
   position: absolute;
   top: -10px;
   left: -10px;
+}
+
+.shadow-heater {
+  height: 18px;
+  width: 48px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 1px;
+  top: 5px;
+}
+
+.shadow-table1 {
+  height: 50px;
+  width: 52px;
+  border-radius: 0 0 0 35px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 2px;
+  bottom: 33px;
+}
+
+.shadow-table2 {
+  height: 50px;
+  width: 30px;
+  border-radius: 0 0 50px 0;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 22px;
+  bottom: 33px;
+}
+
+.shadow-sink1 {
+  height: 20px;
+  width: 51px;
+  border-radius: 12px 0 0 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 1px;
+  bottom: 15px;
+}
+
+.shadow-sink2 {
+  height: 20px;
+  width: 52px;
+  border-radius: 0 12px 12px 0;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: -1px;
+  bottom: 15px;
+}
+
+.shadow-laptop1 {
+  height: 32px;
+  width: 52px;
+  border-radius: 12px 0 0 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: -2px;
+  bottom: 23px;
+}
+
+.shadow-laptop2 {
+  height: 32px;
+  width: 46px;
+  border-radius: 0 12px 12px 0;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 4px;
+  bottom: 23px;
+}
+
+.shadow-bookshelf {
+  height: 18px;
+  width: 50px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 1px;
+  top: 7px;
+}
+
+.shadow-fridge {
+  height: 18px;
+  width: 50px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 1px;
+  top: 17px;
+}
+
+.shadow-tv1 {
+  height: 20px;
+  width: 40px;
+  border-radius: 12px 0 0 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: -6px;
+  bottom: 7px;
+}
+
+.shadow-tv2 {
+  height: 20px;
+  width: 35px;
+  border-radius: 0 12px 12px 0;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 15px;
+  bottom: 7px;
+}
+
+.shadow-sofa1 {
+  height: 20px;
+  width: 52px;
+  border-radius: 12px 0 0 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 2px;
+  bottom: 17px;
+}
+
+.shadow-sofa2 {
+  height: 20px;
+  width: 50px;
+  border-radius: 0 12px 12px 0;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 2px;
+  bottom: 17px;
+}
+
+.shadow-coffeeT {
+  height: 25px;
+  width: 42px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 11px;
+  top: 4px;
+}
+
+.shadow-coffee {
+  height: 18px;
+  width: 44px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 7px;
+  top: 20px;
+}
+
+.sunbeam1 {
+  height: 70px;
+  width: 25px;
+  background-color: lightgoldenrodyellow;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 2px;
+  top: -46px;
+}
+
+.sunbeam2 {
+  height: 70px;
+  width: 28px;
+  background-color: lightgoldenrodyellow;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 24px;
+  top: -46px;
 }

@@ -12,10 +12,12 @@ import heart from '../../assets/images/items/heart.gif';
 import heartless from '../../assets/images/items/heartless.gif';
 import particle from '../../assets/images/items/entangle.gif';
 import selected from '../../assets/images/items/selected-items.png';
-import coreSprite from '../../assets/images/room/core.gif';
+import pipeIcon from '../../assets/images/items/pipe.png';
+import reset from '../../assets/images/items/reset.png';
 
 function GameUITop(props) {
   let weaponIcon;
+  let meleeWeaponIcon = <img id="current-weapon" src={pipeIcon} width="40" height="40"/>
   if (props.player.currentWeapon === null || props.game.gameState === 'postExitBranch' || props.game.gameState === 'exitBranch') {
     weaponIcon = '';
   } else if (props.player.currentWeapon === 'Taser') {
@@ -35,10 +37,6 @@ function GameUITop(props) {
   } else if (props.player.currentSkill === 'clone') {
     skillIcon = <img id="current-skill" src={clone} width="40" height="40"/>
   };
-  let core = null;
-  if(props.game.roomId === 9){
-    core = <div className="core"><img id="current-skill" src={coreSprite} width="400" height="200"/></div>
-  }
   let magic;
   if(props.game.gameState === 'postExitBranch' || props.game.gameState === 'exitBranch'){
     magic = 0;
@@ -50,7 +48,7 @@ function GameUITop(props) {
     uiClass = 'showUI';
   } else {
     uiClass = 'hideUI';
-  }
+  };
   return (
     <div id="UI-wrap" className={uiClass}>
       <div id="UI-content">
@@ -63,8 +61,13 @@ function GameUITop(props) {
             {props.player.health >= 50 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
           </label>
         </div>
-        <img id="selected-items" src={selected} width="125" height="60"/>
-        <div id="weapon">
+        <img className="reset" src={reset} width="65" height="65"/>
+        <span id="particle-percentage">1</span>
+        <img id="selected-items" src={selected} width="175" height="58"/>
+        <div id="melee-weapon" className={props.player.attackType === 'melee' ? "active-attack" : "inactive-attack"}>
+          {meleeWeaponIcon}
+        </div>
+        <div id="weapon" className={props.player.attackType === 'ranged' ? "active-attack" : "inactive-attack"}>
           {weaponIcon}  
         </div>
         <div id="skill">
@@ -73,12 +76,10 @@ function GameUITop(props) {
         <div id="entangle-bar">
           <label>
             <span id="mp"><MPBar type={'entanglement'} magic={magic} /></span>
-            <img id="particle-icon" src={particle} width="270" height="60"/>
-            <span id="particle-percentage">{entanglement}</span>
+            <img id="particle-icon" src={particle} width="176" height="60"/>
           </label>
         </div>
       </div>
-      {core}
     </div>
   );
 }

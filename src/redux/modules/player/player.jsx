@@ -5,6 +5,7 @@ export const UPDATE_PLAYER_NAME = "UPDATE_PLAYER_NAME";
 export const UPDATE_PLAYER_HEALTH = "UPDATE_PLAYER_HEALTH";
 export const UPDATE_PLAYER_MAGIC = "UPDATE_PLAYER_MAGIC";
 export const UPDATE_PLAYER_STATUS = "UPDATE_PLAYER_STATUS";
+export const TOGGLE_COOLDOWN = "TOGGLE_COOLDOWN";
 export const UPDATE_PLAYER_LOCATION = "UPDATE_PLAYER_LOCATION";
 export const UPDATE_PLAYER_DIRECTION = "UPDATE_PLAYER_DIRECTION";
 export const CHANGE_CURRENT_WEAPON = "CHANGE_CURRENT_WEAPON";
@@ -19,6 +20,8 @@ export const UPDATE_CLONE = "UPDATE_CLONE";
 export const SWITCH_ACTIVE_CLONE = "SWITCH_ACTIVE_CLONE";
 export const GET_MAP = "GET_MAP";
 export const UPGRADE_CRYOSTAT = "UPGRADE_CRYOSTAT";
+export const UPDATE_PIPE = "UPDATE_PIPE";
+export const CHANGE_ATTACK_TYPE = "CHANGE_ATTACK_TYPE";
 
 //Action Creators
 export function loadPlayer(playerToLoad) {
@@ -57,6 +60,18 @@ export function updatePlayerDirection(newDirection) {
     direction: newDirection
   };
 }
+export function updatePipe(pipe) {
+  return {
+    type: UPDATE_PIPE,
+    pipe: pipe
+  };
+}
+export function changeAttackType(newAttackType) {
+  return {
+    type: CHANGE_ATTACK_TYPE,
+    attackType: newAttackType
+  };
+}
 export function changeCurrentWeapon(newWeaponId) {
   return {
     type: CHANGE_CURRENT_WEAPON,
@@ -73,6 +88,12 @@ export function updatePlayerStatus(status) {
   return {
     type: UPDATE_PLAYER_STATUS,
     status: status
+  };
+}
+export function toggleCoolDown(coolDown) {
+  return {
+    type: TOGGLE_COOLDOWN,
+    coolDown: coolDown
   };
 }
 export function addWeaponToInventory(weapons) {
@@ -136,30 +157,33 @@ export function upgradeCryostat(){
 
 //Initial State
 const initialState = {
-    name: '???',
+    name: 'Claire',
+    pipe: null,
     health: 50,
     entanglement: 0,
-    magic: 0,
-    status: 'normal',
-    direction: 'north',
-    location: null,
-    currentWeapon: null,
-    weapons: [],
-    currentSkill: null,
-    skills: [],
-    items: [],
+    magic: 100,
+    status: 'stand',
+    coolDown: false,
+    direction: 'south',
+    location: 35,
+    attackType: 'melee',
+    currentWeapon: 'Cryostat',
+    weapons: ['Cryostat', 'Taser'],
+    currentSkill: 'clone',
+    skills: ['clone', 'dash'],
+    items: ['bracelet'],
     newItem: null,
     cloneLocation: null,
     cloneDirection: null,
     activeClone: 1,
-    hasMap: false,
+    hasMap: true,
     cryostatUpgrade: false
   };
 
 //Reducer
 export default function playerReducer(state = initialState, action){
   let newState;
-  const { playerToLoad, name, health, magic, location, direction, currentWeapon, currentSkill, status, weapons, skills, items, newItem, entanglement, cloneLocation, cloneDirection, activeClone } = action;
+  const { playerToLoad, name, health, magic, location, direction, pipe, attackType, currentWeapon, currentSkill, status, coolDown, weapons, skills, items, newItem, entanglement, cloneLocation, cloneDirection, activeClone } = action;
 
   switch (action.type) {
     case LOAD_PLAYER:
@@ -189,6 +213,16 @@ export default function playerReducer(state = initialState, action){
           direction: direction
         });
         return newState;
+    case UPDATE_PIPE:
+      newState = Object.assign({}, state, {
+        pipe: pipe
+      });
+      return newState;
+    case CHANGE_ATTACK_TYPE:
+      newState = Object.assign({}, state, {
+        attackType: attackType
+      });
+      return newState;
     case CHANGE_CURRENT_WEAPON:
       newState = Object.assign({}, state, {
         currentWeapon: currentWeapon
@@ -217,6 +251,11 @@ export default function playerReducer(state = initialState, action){
     case UPDATE_PLAYER_STATUS:
       newState = Object.assign({}, state, {
         status: status
+      });
+      return newState;
+    case TOGGLE_COOLDOWN:
+      newState = Object.assign({}, state, {
+        coolDown: coolDown
       });
       return newState;
     case UPDATE_NEW_ITEM:

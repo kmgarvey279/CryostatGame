@@ -83,11 +83,9 @@ class TitleContainer extends React.Component {
         if (this.props.game.branch === 1){
           if (selectNum == this.props.game.file) {
             this.props.handleLoad();
-            this.props.history.push('/game');
           } else if (selectNum == nextFile) {
             this.props.handleStart();
             this.props.dispatch(menuModule.changeOption(1));
-            this.props.history.push('/game');
           } else {
             this.props.dispatch(soundsModule.changeEffect('doorLocked'));
           };
@@ -95,16 +93,13 @@ class TitleContainer extends React.Component {
           if (selectNum == nextFile) {
             this.props.handleStart();
             this.props.dispatch(menuModule.changeOption(1));
-            this.props.history.push('/game');
           } else if(this.props.game.file === 3){
               if (selectNum == 2) {
                 this.props.handleLoad();
-                this.props.history.push('/game');
               };
           } else {
             if (selectNum == nextFile + 1) {
                 this.props.handleLoad();
-                this.props.history.push('/game');
             } else {
               this.props.dispatch(soundsModule.changeEffect('doorLocked')); 
             }
@@ -126,7 +121,6 @@ class TitleContainer extends React.Component {
         } else {
           this.props.handleLoad();
         }
-        this.props.history.push('/game');
         this.props.dispatch(menuModule.changeMenu('title'));
         this.props.dispatch(menuModule.changeOption(1));
       } else if (selectNum == 4) {

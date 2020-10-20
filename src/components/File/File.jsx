@@ -36,7 +36,7 @@ function File(props){
       <div>
         <span id="file-num">File {props.number}</span> - {props.name} <br/> Cryonics Storage Facility: {text.roomNames[props.saves[props.number].game.roomId - 1]}
         <br/>{branch}
-        <img className="file-player" src={playerImage} width="80" height="80"/>
+        <img className="file-player" src={playerImage} width="85" height="80"/>
       </div>;
     };
   } else if (props.relation == 'current') {
@@ -44,7 +44,7 @@ function File(props){
     <div>
       <span id="file-num">File {props.number}</span> - <br/> Cryonics Storage Facility: {text.roomNames[3]}
       <br/>{branchSpecial1}
-      <img className="file-player" src={playerSilhouette} width="80" height="80"/>
+      <img className="file-player" src={playerSilhouette} width="90" height="80"/>
     </div>
   } else if (props.relation == 'new') {
     fileInfo = 

@@ -9,6 +9,9 @@ div.item {
   animation-name: float;
   animation-duration: 3s;
 }
+.item-pipe{
+  left: -4px;
+}
 
 @keyframes float {
   0%  {bottom: 40px;}

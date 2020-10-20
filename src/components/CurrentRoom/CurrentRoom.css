@@ -16,7 +16,6 @@ div#outer {
 
 div#inner {
   position: relative;
-  z-index: 0;
   width: 50px;
   max-width: 50px;
   min-width: 50px;
@@ -26,4 +25,11 @@ div#inner {
   vertical-align: top;
   display: inline-block;
   break-inside: avoid;
+}
+
+.room-background-image {
+  z-index: 0;
+  position: absolute;
+  left: 320px;
+  top: 190px;
 }

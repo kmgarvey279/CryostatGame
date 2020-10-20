@@ -2,17 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import File from '../File/File';
 import './Select.css';
-import branch from '../../assets/images/menu/branch.png';
-import branch1 from '../../assets/images/menu/branch1.png';
-import branch2 from '../../assets/images/menu/branch2.png';
-import branch3 from '../../assets/images/menu/branch3.png';
-import branchExit1 from '../../assets/images/menu/branch-exit1.png';
-import branchExit2 from '../../assets/images/menu/branch-exit2.png';
-import branchExit3 from '../../assets/images/menu/branch-exit3.png';
-import branchExit from '../../assets/images/menu/branch-exit.png';
-import branchDelete1 from '../../assets/images/menu/branch-delete1.png';
-import branchDelete2 from '../../assets/images/menu/branch-delete2.png';
-import branchDelete3 from '../../assets/images/menu/branch-delete3.png';
 
 
 function Select(props){

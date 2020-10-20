@@ -10,7 +10,9 @@ import keyCard2Old from '../../../assets/images/items/key2Old.png';
 import dash from '../../../assets/images/items/collider.png';
 import clone from '../../../assets/images/items/cloneOrb.gif';
 import freeze from '../../../assets/images/items/freeze.gif';
+import shock from '../../../assets/images/items/shock.gif';
 import bracelet from '../../../assets/images/items/bracelet.png';
+import pipe from '../../../assets/images/items/pipe.png';
 import React from 'react';
 
 export const weapons = {
@@ -18,15 +20,15 @@ export const weapons = {
     name: 'Taser',
     range: 4,
     sprites: {
-      projectile: <img src={taser} width="60" height="60"/>
+      projectile: <img src={taser} width="50" height="40"/>
     }
   },
   Cryostat: {
     name: 'Cryostat',
     range: 1,
     sprites: {
-      projectileNS: <img src={cryostat} width="60" height="60"/>,
-      projectileEW: <img src={cryostat} width="60" height="60"/>
+      projectileNS: <img src={cryostat} width="60" height="50"/>,
+      projectileEW: <img src={cryostat} width="60" height="50"/>
     }
   }
 };
@@ -42,5 +44,7 @@ export const sprites = {
   dash: <img src={dash} width="50" height="50"/>,
   clone: <img src={clone} width="50" height="50"/>,
   freeze: <img src={freeze} width="50" height="50"/>,
-  bracelet: <img src={bracelet} width="30" height="30"/>
+  shock: <img src={shock} width="50" height="50"/>,
+  bracelet: <img src={bracelet} width="30" height="30"/>,
+  pipe: <img className="item-pipe" src={pipe} width="50" height="50"/>
 }

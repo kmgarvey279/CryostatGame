@@ -9,6 +9,7 @@ export const UPDATE_SPRITE = "UPDATE_SPRITE";
 export const UPDATE_EMOTE = "UPDATE_EMOTE";
 export const UPDATE_TRANSITION = "UPDATE_TRANSITION";
 export const TOGGLE_ALERT = "TOGGLE_ALERT";
+export const UPDATE_BULLET = "UPDATE_BULLET";
 export const SET_EXPLOSION = "SET_EXPLOSION";
 export const SET_WARNING = "SET_WARNING";
 export const SET_SHATTER = "SET_SHATTER";
@@ -20,7 +21,7 @@ export function nullRoom() {
     type: NULL_ROOM,
   };
 }
-export function addSquare(newSquareId, newValue, newContent, newTileImage, newSprite, newTransition, alertBool, explosion = null, warning = false, shatter = 'none', newTileOverlay = 'none', newEmote = null) {
+export function addSquare(newSquareId, newValue, newContent, newTileImage, newSprite, newTransition, alertBool, explosion = null, bullet = null, warning = false, shatter = 'none', newTileOverlay = 'none', newEmote = null) {
   return {
     type: ADD_SQUARE,
     squareId: newSquareId,
@@ -31,6 +32,7 @@ export function addSquare(newSquareId, newValue, newContent, newTileImage, newSp
     emote: newEmote,
     transition: newTransition,
     alert: alertBool,
+    bullet: bullet,
     explosion: explosion,
     warning: warning,
     shatter: shatter,
@@ -81,6 +83,14 @@ export function toggleAlert(squareId, alertBool){
   }
 }
 
+export function updateBullet(squareId, bullet){
+  return {
+    type: UPDATE_BULLET,
+    squareId: squareId,
+    bullet: bullet
+  }
+}
+
 export function setExplosion(squareId, explosion){
   return {
     type: SET_EXPLOSION,
@@ -119,7 +129,7 @@ export function setTileOverlay(squareId, tileOverlay){
 const roomReducer = (state = {}, action) => {
   let newState;
   let newSquare;
-  const { squareId, value, content, tileImage, sprite, emote, transition, alert, explosion, warning, shatter, tileOverlay} = action;
+  const { squareId, value, content, tileImage, sprite, emote, transition, alert, bullet, explosion, warning, shatter, tileOverlay} = action;
 
   switch (action.type) {
     case NULL_ROOM:
@@ -136,6 +146,7 @@ const roomReducer = (state = {}, action) => {
             emote: emote,
             transition: transition,
             alert: alert,
+            bullet: bullet,
             explosion: explosion,
             warning: warning,
             shatter: shatter,
@@ -175,6 +186,12 @@ const roomReducer = (state = {}, action) => {
         return newState;
     case UPDATE_TRANSITION:
       newSquare = Object.assign({}, state[squareId], {transition});
+      newState = Object.assign({}, state, {
+        [squareId]: newSquare
+      });
+        return newState;
+    case UPDATE_BULLET:
+      newSquare = Object.assign({}, state[squareId], {bullet});
       newState = Object.assign({}, state, {
         [squareId]: newSquare
       });

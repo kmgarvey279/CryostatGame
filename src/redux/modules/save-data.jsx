@@ -1,5 +1,6 @@
 //Constants
 export const SAVE_GAME = "SAVE_GAME";
+export const SAVE_STATE = "SAVE_STATE";
 export const LOAD_GAME = "LOAD_GAME";
 export const COPY_GAME = "COPY_GAME";
 export const ERASE_GAME = "ERASE_GAME";
@@ -10,6 +11,16 @@ export function saveGame(file, player, flags, game, maps, doors) {
   return {
     type: SAVE_GAME,
     file: file,
+    player: player,
+    flags: flags,
+    game: game,
+    maps: maps,
+    doors: doors
+  }
+};
+export function saveState(player, flags, game, maps, doors) {
+  return {
+    type: SAVE_STATE,
     player: player,
     flags: flags,
     game: game,
@@ -74,6 +85,13 @@ const initialState = {
     game: {},
     maps: {},
     doors: {}
+  },
+  savedState: {
+    player: {},
+    flags: {},
+    game: {},
+    maps: {},
+    doors: {}
   }
 };
 
@@ -89,6 +107,17 @@ const savesReducer = (state = initialState, action) => {
           [file]: newFile
         });
         return newState;
+    case SAVE_STATE:
+      newState = Object.assign({}, state, {
+        savedState : {
+          player: player, 
+          flags: flags, 
+          game: game, 
+          maps: maps,
+          doors: doors
+        }
+      });
+      return newState;
     case ERASE_GAME:
         newState = Object.assign({}, state, {
             [file]: {

@@ -5,3 +5,19 @@ div#npc{
     right: -12px;
     break-inside: avoid;
   }
+
+ #mutiny-sprite{
+    z-index: 200;
+    position: absolute;
+    bottom: 27px;
+    right: -17px;
+    break-inside: avoid;
+  }
+
+  #young-lucy-sprite {
+    z-index: 200;
+    position: absolute;
+    bottom: 31px;
+    right: -1px;
+    break-inside: avoid;
+  }

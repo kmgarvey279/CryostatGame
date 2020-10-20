@@ -25,9 +25,17 @@ export function reverseDirection(direction) {
     return 'north';
   } else if (direction == 'east') {
     return 'west';
-  } else {
+  } else if (direction == 'west'){
     return 'east';
-  };
+  } else if (direction == 'northEast'){
+    return 'southWest';
+  } else if (direction == 'southWest'){
+    return 'northEast';
+  } else if (direction == 'northWest'){
+    return 'southEast';
+  } else if (direction == 'southEast'){
+    return 'northWest';
+  }
 }
 
 export function getDirection(num) {

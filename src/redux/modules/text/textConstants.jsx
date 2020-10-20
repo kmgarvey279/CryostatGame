@@ -1,9 +1,30 @@
-import React from 'react';
-import { iteratee } from 'lodash';
-
 
 export const roomNames = ['Makeshift Recovery Room', 'Storage Room', 'Warp Lab Access', 'Warp Lab', 'Cryo Lab', 'Shipping and Receiving Room', 'Xenobiology Lab', 'Core Access', 'The Core']
-
+// export const lore = {
+//   Wounds: {1: ['AKA: "achronic wounds". This term encompasses the totality of spacial/temporal distortions that were first obsurved in 1990.', 
+//   'The lifecycle of the wounds appears to flow in the opposite direction of conventional time.']},
+//   Scars: {1: ['The inital form taken by the Wounds (at least according to conventional measures of time).',
+//   'Unlike Wounds, no information can pass in or out of a scar, making them largely useless for time travel purposes.',
+//   'They cannot be directly observed, and are only detectable due to subtle distortions in local space-time.'
+//   ]},
+//   Stigmata: {1: ['Acronic Wounds that appear on the bodies of individuals (Stigmatics).',
+//             'Stigmata follow a similar lifecycle to their larger counterparts, progressing from small "scars" to "wounds" that take up more-and-more of the afflicted\'s body.',
+//             'The stigmata do not typically cause pain or discomfort, but affected areas begin to loose all feeling.',
+//             'Stigmatics often seem to suffer from a form of "phantom limb syndrome", in which they feel as if their afflicted body parts are not their own.',
+//             'Most notably, these wounds are almost always accomendied by unique abilities. It would hardly be an exageration to refer to them as "superpowers".',
+//             'Stigmatism is obsurved in females at roughly 3x the rate they are obsrved in males across species. The reason for this, as well as the fact that there seem to be elements of heretity invlved, are not well understood.'],
+//   openTimeLoops: {1: ['a temporal loop the wraps back upon itself before continuing forward in time.',
+//             'In contrast to closed time loops, people, objects, or information traveling through a closed time loops have defitive points of origin.', 
+//             'Claire\'s ability to create a "clone" by traveling back in time is an example of an open time loop.'],
+//   theBoard: {1: ['The counsol of directors who control Needle\'s Eye and its subsidearies.',
+//               'While the President is in charge of the majority of day-to-day operations, they still ultimatly answer to the Board.',
+//               'The Board claims to have trancended the notion of time, but Mutiny seems to think']}
+//           },
+//   needlesEye: {1: ['An inter-temporal megacorp that dominates the timestream due to its near monoply on the Wounds.',
+//               'Needle\'s Eye began as psyop cult created by a R&D firm used to buy up huge tracts of real-estate where Scars were detected without drawing too much attention from global powers',
+//               'The cult ammased so many followers and gained so much influnce that it eventually came to completly swallow up its parent company.',
+//               'It\'s unclear what the ratio of true belivers-to-rational oprtunists is at this point, even amoung the Board itself.']} 
+//   }
 export const examine = {
   tank1: { 1: ['Some sort of storage tank.', 'You can barely make out a human-like shape through the frosted glass.'] },
   tank2: { 1: ['Some sort of storage tank.', 'You can barely make out a human-like shape through the frosted glass.'] },
@@ -21,9 +42,15 @@ export const examine = {
   },
   save: {
     1: ['The strange light seems to split into countless branching rays.'],
-    2: ['options', 'Save your game at this junction?', ['No', 'Yes']],
-    3: ['results', ['Save Canceled.', 'Game Saved.']]
+    2: ['options', ['Save Game', 'Cancel']],
   },
+  saveA: {
+    1: ['Game saved.'],
+  },
+  saveB: {
+    1: ['Save canceled.'],
+  },
+
   desk1: {
     1: ['A desk. The computer seems damaged irreparably.']
   },
@@ -46,12 +73,24 @@ export const examine = {
   bagel: {
     1: ['It\'s a poster from one of Lucy\'s favorite movies.', 'An ancient demon is accedenlty reserected as a bagel. Wacky hyjunks insue.', 'The film ends with the demon attempting to turn the enture universe into a giant sandwitch.', 'Lucy has very... unique tastes. To put it mildly.']
   },
+  chared: {
+    1: ['What a surprise, Lucy\'s watching "Charred" for the ten millionth time.', 'It\'s the story of a princess born with the power to control fire and her relationship with her sister.', 'She eventually comes to embrase her power, and goes on to reduce her kindom to ash.']
+  },
   mutinyWindow1: {
-    1: ['Spikey Haired Girl', ['Yo!', 'I\'m a little suprised, I don\'t usually run into other scavengers out here.']],
-    2: ['Claire', ['Scavengers?']],
+    1: ['Spikey Haired Girl', ['Yo!', 'How goes it? You also scoping this place out for loot?']],
+    2: ['Claire', ['options', ['(lie) Oh yeah, I\'m totally here for the sick loot.', 'Actually, I think I just woke up from a *very* long sleep...']]],
+  },
+  mutinyWindow1A: {
+    1: ['Spikey Haired Girl', ['Cool, cool.', 'I figured you couldn\'t be security or anything from the way you were dressed.', 'Not that they really ever really patrol inside.']],
+  },
+  mutinyWindow1B: {
+    1: ['Spikey Haired Girl', ['Oh yeah, I ran into a few of those cryo pods things.', 'They were all empty though.', 'Not too surprisiong, this place has been out of commision for a while. Some big disaster a while back.', 'Guess they missed someone when they were clearing out?']],
+    2: ['Claire', ['Yeah, I guess. I don\'t really remember much about how I go in there in the first place.']],
+  },
+asa: {
     3: ['Spikey Haired Girl', ['Hmm, you aren\'t here on a salvage job?']],
-    4: ['Claire', ['Most of my memory is pretty hazy, but that doesn\'t sound familar at all.', 'I think that I might have just been frozen in one of the pods around here.']],
-    5: ['Spikey Haired Girl', ['Oh yeah, I ran into a few of those.', 'Most had degraded into total disrepair though, I didn\'t think that any of the bodies would still be salvagabe.', 'This place has been out of commision for a while, ya know?', 'Oh yea, I totally forgot to introduce myself!', 'The name\'s Mutiny.']],
+    4: ['Claire', ['From what I can piece together, it seems like I was frozen in one of the pods around here.']],
+    5: ['Spikey Haired Girl', ['Oh yeah, I ran into a few of those.', 'All empty though.', 'This place has been out of commision for a while, ya know?', 'Oh yea, I totally forgot to introduce myself!', 'The name\'s Mutiny.']],
     6: ['Claire', ['Oh, that\'s a... unique name.']],
     7: ['Mutiny', ['Thanks!', 'How about you, do you rememeber your name at least?']],
     8: ['Claire', ['It\'s Claire, I remember that much.', 'Now can you tell me more about where we are?']],
@@ -65,11 +104,32 @@ export const examine = {
     16: ['Claire', ['Okay, fine. I guess I don\'t really have any better options.']],
     17: ['Mutiny', ['That\'s the spirit!']],
   },
+
+  // [Phew, finally out of her sight. 
+  // I know, being forced to think inside our own head is *hard*. Guess we really let those musctles atrophy. Anyway, stellular performance, as always. I think we played the role of wide-eyed fish-out-of-water pretty damn well', "Golly miss Mutiny, is time-travel really a thing?"],
+  // No one asked you for your opinion.
+  // Come on Claire, don't put all the blame on me. I wouldn't have been able to jump back in time if you did't open a channel for me in the first place. It takes two to timeloop. Err, actually just one I guess? We know want I mean.
+  // I know, I know. These invasive loops aren't anyone's fault. We're just broken. No wonder they left us here.
+  // don't play dumb, I know you know about loop-induced amnesia. even though I already said all the same things, I can't remmember any of it. those memories just don't stick until the "second time around"
+  // yeah, yeah. some sort of human adaptation to 
+  // dude, come on. don't talk about us like that.
+  // you're one to talk, you just said our brain was screwed up a few seconds ago!
+  // sorry. I'm trying.
+  // yeah, I know. Are we done here?
+  // In that much of a hurry to become me? I'm flattered. 
+  // ha. ha. that joke stopped being funny after the first few thousand times
+  // doesn't stop you from decidng to tell it 
+
+
+
+
   mutinyWindow2: {
     1: ['Mutiny', ['Come on, quit wasting time and get going.']]
   },
   sign1: { 1: ['Spacial and Interdimentional Research', 'Please check in with security guard on duty.'] },
   sign2: { 1: ['Xenobiology Lab', 'Please check your clothing and hair for any stowaways on your way out.'] },
+  signCore: {1: ['Magmatic Power Plant Access.']},
+  signWarp: {1: ['North: The Wound. West: Magmatic Power Plant Access.']},
   terminalOff: { 1: ['A computer terminal. It doesn\'t seem to be receiving any power.'] },
   spookyTerminal: { 1: ['A computer terminal. It doesn\'t seem to be receiving any power.'] },
   mapTerminal: {
@@ -78,9 +138,15 @@ export const examine = {
   },
   terminal1: {
     1: ['Logging in...'],
-    2: ['options', 'Please input new door lock status:', ['Lock', 'Unlock']],
-    3: ['results', ['Door Lock Engaged.', 'Door Lock Disengaged.']],
-    4: ['Logging Out...']
+    2: ['options', ['Lock the door.', 'Unlock the door.']],
+  },
+  terminal1A: {
+    1: ['Door Lock Engaged.'],
+    2: ['Logging Out...']
+  },
+  terminal1B: {
+    1: ['Door Lock Disengaged.'],
+    2: ['Logging Out...']
   },
   //belt/ice room
   terminal2: {
@@ -203,15 +269,15 @@ export const examine = {
 
 export const dialogue = {
   wakeUp: {
-    1: ['Claire', ['Ouch, that\'s bright!', 'Just where am I? Is this some sort of hospital?']]
+    1: ['Claire', ['Ouch, that\'s bright!', 'Just where am I? Is this some sort of hospital?']],
   },
   intercom1: {
     1: ['Intercom', ['Hey!']],
-    2: ['Claire', ['Huh? An intercom?']],
-    3: ['Intercom', ['Yeah, that\'s right, you with the wonky ponytail. I know you can hear me.']],
-    4: ['Claire', ['What do you want? What is this place?']],
-    5: ['Intercom', ['Sorry, I can\'t hear anything you\'re saying, I only have visuals on my end.', 'If you want to talk, I\'m in the room to your north.', 'Getting the door open looks tough, but I\'m sure you can figure it out.', 'Good luck :)']],
-    6: ['Claire', ['...', 'Damn it, this is really sketchy.', 'What else am I supposed to do though...']]
+    2: ['Claire', ['(An intercom? That\'s weird, I would have guessed that this place was abandoned...)']],
+    3: ['Intercom', ['Yeah, that\'s right, you with the antenna! I know you can hear me.']],
+    4: ['Claire', ['...antenna?', 'Umm... hey there, mysterious voice! What do you want?']],
+    5: ['Intercom', ['Sorry, but I can\'t hear anything you\'re saying, I only have visuals on my end.', 'If you want to talk, I\'m in the room to your north.', 'Getting the door open looks tough, but I\'m sure you can figure it out.', 'Good luck :)']],
+    6: ['Claire', ['...', '(Hmmm, this pretty sketchy, but I can\'t pass up the chance to gather more information about this place.)']]
   },
   //enter room 7 for the first time
   mutiny1: {
@@ -359,6 +425,7 @@ export const flavorText = {
   Cryostat2: ['You found the Cryostat!', 'It\'s still in peak condition.', 'Water will now remain frozen until you leave a room!'],
   dash: ['New skill unlocked: Supercollider', 'Use to quickly dash in any direction. MP will automatically regenerate over time.'],
   clone: ['New kill unlocked: Superposition', 'Use to create a copy of yourself, activating it again will swap places with your copy. Touch your copy to cancel the ability.'],
-  bracelet: ['You found a Smart Bracelet!', 'In addition to tracking your vital signs, you can now use EnterKey to open the menu.']
+  bracelet: ['You found a Smart Bracelet!', 'In addition to tracking your vital signs, you can now use EnterKey to open the menu.'],
+  pipe: ['You found an old pipe!', 'It\'s no sword of destiny, but it should get the job done.']
 }
 

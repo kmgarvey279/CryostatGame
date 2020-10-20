@@ -20,6 +20,9 @@ export function triggerFlag(flagId) {
 //Initial State
 const initialState = {
   'bootUp1': {triggered: false},
+  //enter hallway1
+  'hallwayFight': {triggered: false},
+  'hallwayClear': {triggered: false},
   //enter room 6
   'intercom1': {triggered: false},
   //enter room 7

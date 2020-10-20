@@ -11,11 +11,14 @@ import throttle from 'lodash/throttle';
 let retrievedState = saveData.loadState();
 const store = createStore(rootReducer, retrievedState);
 
-store.subscribe(throttle(() => {
-  saveData.saveState({
-    saves: store.getState().saves
+// if(store.getState().saves !== retrievedState.saves){
+  store.subscribe(() => {
+    saveData.saveState({
+      saves: store.getState().saves
+    });
+    console.log("game saved")
   });
-}, 10000));
+// }
 
 let unsubscribe = store.subscribe(() =>
   console.log(store.getState())

@@ -36,13 +36,10 @@ class TextBoxes extends React.Component {
     let activeSpeaker;
     let speakerColor;
     //get paragraph and speaker (if applicable)
-    if (this.props.text.activeTextType == 'dialogue'){
+    if (this.props.text.activeTextType == 'dialogue' || this.props.text.activeText.includes('Window')){
       activeSpeaker = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][0];
       paragraphToRender = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][1];
-    } else if (this.props.text.activeText.includes('Window')) {
-      activeSpeaker = textConsts.examine[this.props.text.activeText][this.props.text.paragraph][0];
-      paragraphToRender = textConsts.examine[this.props.text.activeText][this.props.text.paragraph][1];
-    };
+    }
     if(activeSpeaker !== undefined){
       if(activeSpeaker === 'Mutiny' || activeSpeaker === 'Intercom' || activeSpeaker === 'Spikey Haired Girl') {
         speakerColor = 'mutiny-color';
@@ -55,14 +52,7 @@ class TextBoxes extends React.Component {
       paragraphToRender = textConsts.examine[this.props.text.activeText][this.props.text.paragraph];
     }
     //get line
-    let lineToRender = '';
-    if (paragraphToRender[this.props.text.line] == 'options') {
-      lineToRender = paragraphToRender[this.props.text.line + 1];
-    } else if (paragraphToRender[this.props.text.line] == 'results') {
-      lineToRender = paragraphToRender[1][this.props.text.selectedOption -1];
-    } else {
-      lineToRender = paragraphToRender[this.props.text.line];
-    };
+    let lineToRender = paragraphToRender[this.props.text.line];
     //download bar
     if(this.props.text.activeText === 'mapTerminal'){
       if(this.props.text.line === 0){
@@ -121,11 +111,19 @@ class TextBoxes extends React.Component {
         </div>
       </div>
     )
+  } else if ((this.props.text.activeTextType == 'dialogue' || this.props.text.activeText.includes('Window')) && this.props.text.options.length > 1) {
+    return (
+      <div id="wrap">
+        <div className={speakerColor} id="box-content">
+          <Speaker speaker={activeSpeaker}/>
+          <Options text={this.props.text} menu={this.props.menu}/>
+        </div>
+      </div>
+    );
   } else if (this.props.text.options.length > 1) {
       return (
         <div id="wrap">
           <div id="box-content">
-            <div id="text-options">{lineToRender}</div>
             <Options text={this.props.text} menu={this.props.menu}/>
           </div>
         </div>

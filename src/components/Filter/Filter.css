@@ -24,6 +24,18 @@ div#fire {
   left: 0px;
   }
 
+div#frost {
+  opacity: 0.2;
+  background-color: white;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: none;
+  top: 0px;
+  left: 0px;
+}
+
   div#powerOff {
   opacity: 0.5;
   background-color: black;

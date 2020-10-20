@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CurrentRoom from '../CurrentRoom/CurrentRoom';
+import TitleContainer from '../TitleContainer/TitleContainer';
 import TextBoxes from '../TextBoxes/TextBoxes';
 import GameUITop from '../GameUITop/GameUITop';
 import BossUI from '../BossUI/BossUI';
@@ -12,9 +13,25 @@ import Error from '../Error/Error';
 import './Game.css';
 import Music from '../Music/Music';
 import SFX from '../SFX/SFX';
+import wound from '../../assets/images/room/wound.png';
 
 function Game(props){
-  if (props.game.gameState === 'paused') {
+  let backgroundImage;
+  if(props.game.gameState === 'title'){
+    return (
+    <div>
+      <TitleContainer
+        handleStart={props.handleStart}
+        handleLoad={props.handleLoad}
+        menu={props.menu}
+        player={props.player}
+        saves={props.saves}
+        game={props.game}
+        sounds={props.sounds}
+      />
+    </div>
+    );
+  } else if (props.game.gameState === 'paused') {
     return (
       <div className="game">
         <Map maps={props.maps} game={props.game} player={props.player}/>

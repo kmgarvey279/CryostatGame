@@ -1,0 +1,23 @@
+#player{
+    z-index: 100;
+    position: absolute;
+    bottom: 30px;
+    right: -17px;
+    break-inside: avoid;
+  }
+
+  #player-west{
+    z-index: 100;
+    position: absolute;
+    bottom: 30px;
+    right: -13px;
+    break-inside: avoid;
+  }
+
+  #player-strike-west{
+    z-index: 100;
+    position: absolute;
+    bottom: 30px;
+    right: -10px;
+    break-inside: avoid;
+  }

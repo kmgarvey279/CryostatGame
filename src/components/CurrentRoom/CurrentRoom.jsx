@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import Square from '../Square/Square';
 import Filter from '../Filter/Filter';
 import './CurrentRoom.css';
+import wound from '../../assets/images/room/wound.png';
 
 function CurrentRoom(props){
+  let backgroundImage;
+  if(props.game.roomId === 10){
+    backgroundImage = <img className="room-background-image" src={wound} width="500" height="420"/>
+  }
   return (
     <div id="outer">
       <Filter branch={props.game.branch} filter={props.game.filter}/>
@@ -19,6 +24,7 @@ function CurrentRoom(props){
           emote={square.emote}
           transition={square.transition}
           alert={square.alert}
+          bullet={square.bullet}
           explosion={square.explosion}
           warning={square.warning}
           shatter={square.shatter}
@@ -32,6 +38,7 @@ function CurrentRoom(props){
           projectiles={props.projectiles}/>
         </div>;
       })};
+      {backgroundImage}
     </div>
   );
 };
