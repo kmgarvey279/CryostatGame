@@ -1,27 +1,37 @@
-div#selected {
-  background: rgb(242,122,6);
-  background: linear-gradient(90deg, rgba(242,122,6,0) 0%, rgba(246,161,6,0.892528328611898) 30%, rgba(247,112,6,1) 50%, rgba(246,161,6,0.892528328611898) 70%, rgba(0,212,255,0) 100%);
-  color: white; 
-}
-  .selectedFile h4 {
-    color: white;
-  }
 
 div#selectedFile {
   border: solid 3px lightblue;
 }
+#selected H4 {
+  color: darkmagenta !important;
+}
+
 .selectScreen h2, h4 {
   color: black;
 }
 
+.select-prompt{
+  text-align: right;
+}
+
+.selected-difficulty {
+  color: orangered;
+}
+
+#difficulty-option{
+  margin-right: 10px;
+}
+
 div.selectScreen {
-  border: solid white 2px;
+  border: solid violet 3px;
+  margin-top: 15px;
   border-radius: 5px;
   background: rgb(239,231,238);
-  background: linear-gradient(0deg, rgba(239,231,238,1) 0%, rgba(189,172,209,1) 100%);
+  background: linear-gradient(0deg, rgb(245, 218, 241) 0%, rgb(173, 74, 182) 100%);
   text-align: center;
   margin-left: 10%;
   margin-right: 10%;
+  font-size: 20px;
 }
 
 div.select-wrap {
@@ -52,24 +62,24 @@ div.file {
   margin: 15px;
   color: black;
   background: rgb(35,170,173);
-  background: linear-gradient(0deg, rgba(35,170,173,1) 0%, rgba(77,80,128,1) 100%);
+  background: linear-gradient(0deg,  rgb(172, 106, 235) 0%,rgb(97, 30, 185) 100%);
   text-align: left;
   padding: 10px;
   position: relative;
   z-index: 2;
-  box-shadow: 5px 5px 5px #aaaaaa
+  box-shadow: 5px 5px 5px #681d68;
+  border: solid blueviolet 3px;
 }
 
 div.file#selectedFile {
-  border: solid white 1px;
+  border: solid blueviolet 3px;
   background: rgb(255,255,255);
-  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(140,177,219,1) 100%);
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%,  rgb(172, 106, 235) 100%);
 }
 
 div.file#deleteFile {
-  border: solid black 1px;
   background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,0,0,1) 100%);
+  background: linear-gradient(0deg, rgb(44, 1, 1) 0%, rgba(255,0,0,1) 100%);
 }
 
 div.file#copyFile {

@@ -9,36 +9,62 @@ div#wrap {
   overflow: auto;
 }
 div#item-content {
+  background-color: dimgray; 
+  border: 3px solid whitesmoke; 
+  border-radius: 3px;
+  width: 80%;
+  min-width: 700px;
+  max-width: 700px;
+  height: 155px;
   margin: 10% auto;
-  margin-top: 400px;
-  width: 70%;
-  height: 150px;
-  background-color:DarkOrange; 
-  border: 3px solid GoldenRod; 
-  font-size: 22px;
+  margin-top: 450px;
   padding-left: 15px;
+  padding-right: 15px;
+  position: sticky;
+  opacity: 0.9;
+}
+
+@media only screen and (min-width: 900px){
+  div#item-content {
+    background-color: dimgray; 
+    border: 3px solid whitesmoke; 
+    border-radius: 3px;
+    width: 80%;
+    min-width: 700px;
+    max-width: 700px;
+    height: 155px;
+    margin: 10% auto;
+    margin-top: 410px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: sticky;
+    opacity: 0.9;
+  }
 }
 
 div#header {
   font-weight: bold;
   margin-bottom: 5px;
   margin-top: 10px;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .icon-box {
   float: left;
-  padding-top: 45px;
 }
 
 .item-text-box {
-  margin-left: 60px;
+  margin-left: 130px;
+  font-size: 25px;
 }
 
-#item-icon {
-  margin-top: 10px;
-  padding-left: 5px;
+#item-icon img{
+  position: absolute;
+  margin-top: 15px;
+  padding: 10px;
   text-align: center;
+  height: 100px;
+  width: 100px;
 }
 
 #special-name {

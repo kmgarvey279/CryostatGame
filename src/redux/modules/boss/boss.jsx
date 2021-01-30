@@ -10,6 +10,7 @@ export const UPDATE_BOSS_HEALTH = "UPDATE_ENEMY_HEALTH";
 export const UPDATE_TILE_ARRAY = "UPDATE_TILE_ARRAY";
 export const UPDATE_BOSS_ATTACK = "UPDATE_BOSS_ATTACK";
 export const UPDATE_BEAM = "UPDATE_BEAM";
+export const NULL_BOSS = "NULL_BOSS";
 
 //Action Creators
 export function updateBossName(newName) {
@@ -79,6 +80,12 @@ export function updateTileArray(newArray) {
     return {
       type: UPDATE_BEAM,
       beam: beam
+    }
+  }
+
+  export function nullBoss() {
+    return {
+      type: NULL_BOSS
     }
   }
   
@@ -151,6 +158,20 @@ const bossReducer = (state = initialState, action) => {
         case UPDATE_BEAM:
           newState = Object.assign({}, state, {
               beam: beam
+          });
+          return newState;
+        case NULL_BOSS:
+          newState = Object.assign({}, state, {
+            status: null,
+            location: 0,
+            direction: 'south',
+            health: '',
+            tileArr: [],
+            name: '',
+            kind: '',
+            titles: [],
+            attack: false,
+            beam: null
           });
           return newState;
         default:

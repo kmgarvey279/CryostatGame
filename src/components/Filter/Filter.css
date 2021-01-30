@@ -12,6 +12,68 @@ div#fireAnimate {
   to { background-position: 0 100%; }
 }
 
+#circle-background {
+  z-index: 10;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#circle-background::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  filter: blur(20px);
+  box-shadow: 0px 0px 0px 1000px darkred;
+  opacity: 0.7;
+  animation: throb 1s infinite;
+}
+
+@keyframes throb {
+  0% { border-radius: 100%; }
+  100% { border-radius: 49%; }
+}
+
+.rage-filter1{
+  background-color: red;
+  opacity: 0.2;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  position: absolute;
+  z-index: 1000;
+}
+
+.rage-filter2{
+  background-color: red;
+  opacity: 0.4;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  position: absolute;
+  z-index: 1000;
+}
+
+.rage-filter3{
+  background-color: red;
+  opacity: 0.6;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  position: absolute;
+  z-index: 1000;
+}
+
 div#fire {
   opacity: 0.3;
   background-color: red;
@@ -36,10 +98,10 @@ div#frost {
   left: 0px;
 }
 
-  div#powerOff {
+  .power-off {
   opacity: 0.5;
   background-color: black;
-  z-index: 1;
+  z-index: 3000;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -51,7 +113,7 @@ div#frost {
 div#spooky {
   opacity: 0.3;
   background-color: mediumorchid;
-  z-index: 1;
+  z-index: 99;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -68,4 +130,78 @@ div#spookyAnimate {
   background-position: 0px 0px;
   background-repeat: repeat-y;
   animation: fire 30s linear infinite;
+}
+
+.static {
+  top:0;
+  left:0;
+  width: 100%; 
+  height: 100%;
+  background-image: url("../../assets/images/7vqd.gif") ;
+  background-size: cover;
+  position: absolute;
+  z-index: 2000;
+  opacity: 0.8;
+}
+
+.opaque-filter{
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  position: absolute;
+  z-index: 2000;
+}
+
+.wave-filter{
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  position: absolute;
+  z-index: 1000;
+}
+
+.board-filter{
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  position: absolute;
+  z-index: 1000;
+}
+
+.fade-out{
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  position: absolute;
+  z-index: 1000;
+  animation: fadeOut 2.5s;
+  opacity: 100%;
+}
+@keyframes fadeOut {
+  0% { opacity: 0%; }
+  100% { opacity: 100%; }
+}
+
+.fade-in{
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  position: absolute;
+  z-index: 1000;
+  animation: fadeIn 2.5s;
+  opacity: 0%;
+}
+@keyframes fadeIn {
+  0% { opacity: 100%;}
+  100% { opacity: 0%;}
 }

@@ -10,14 +10,42 @@ div#npc{
     z-index: 200;
     position: absolute;
     bottom: 27px;
-    right: -17px;
+    right: -22px;
     break-inside: avoid;
   }
 
-  #young-lucy-sprite {
-    z-index: 200;
-    position: absolute;
-    bottom: 31px;
-    right: -1px;
-    break-inside: avoid;
-  }
+#young-lucy-sprite {
+  z-index: 200;
+  position: absolute;
+  bottom: 31px;
+  right: -1px;
+  break-inside: avoid;
+}
+
+#mourner-sprite {
+  z-index: 200;
+  position: absolute;
+  bottom: 27px;
+  right: -2px;
+  break-inside: avoid;
+  filter: blur(2.5px);
+}
+
+#president-sprite {
+  z-index: 200;
+  position: absolute;
+  bottom: 27px;
+  right: -2px;
+  break-inside: avoid;
+}
+
+.vanish {
+  animation: vanish 1000ms;
+  opacity: 0;
+}
+
+@keyframes vanish {
+  0%  {opacity: 1}
+  100%  {opacity: 0}
+}
+

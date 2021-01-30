@@ -8,11 +8,20 @@ function Select(props){
   let fileOne = <File number={1} name={props.saves[1].player.name} saves={props.saves} game={props.game} relation={'normal'}/>;
   let fileTwo = <File number={2} name={props.saves[2].player.name} saves={props.saves} game={props.game} relation={'normal'}/>;
   let fileThree = <File number={3} name={props.saves[3].player.name} saves={props.saves} game={props.game} relation={'normal'}/>;
+  if(props.menu.selectedMenu === 'start'){ 
+    if(props.menu.selectedOption === 1){
+      fileOne = <div>Select a difficulty<br/><div id="difficulty-options"><span id="difficulty-option" className={props.difficulty === 'normal' ? 'selected-difficulty' : ''}>Normal</span>  <span id="difficulty-option" className={props.difficulty === 'hard' ? 'selected-difficulty' : ''}>Hard</span></div></div>
+    } else if(props.menu.selectedOption === 2){
+      fileTwo = <div>Select a difficulty<br/><div id="difficulty-options"><span id="difficulty-option" className={props.difficulty === 'normal' ? 'selected-difficulty' : ''}>Normal</span><span className={props.difficulty === 'hard' ? 'selected-difficulty' : ''}>Hard</span></div></div>
+    } else if(props.menu.selectedOption === 3){
+      fileThree = <div>Select a difficulty<br/><div id="difficulty-options"><span id="difficulty-option" className={props.difficulty === 'normal' ? 'selected-difficulty' : ''}>Normal</span><span className={props.difficulty === 'hard' ? 'selected-difficulty' : ''}>Hard</span></div></div>
+    }
+  }
   let deleteFile = "DELETE FILE";
   let copyFile = "COPY FILE";
 
   let heading;
-  if (props.menu.selectedMenu == 'select'){
+  if (props.menu.selectedMenu == 'select' || props.menu.selectedMenu == 'start'){
     heading = "Select a File";
   } else if (props.menu.selectedMenu == 'delete'){
     heading = "Select a File to Delete";
@@ -64,9 +73,6 @@ function Select(props){
         <div id={isSelected(6)}>
           <h4>RETURN TO TITLE</h4>
         </div>
-        <div>
-          <h4><span className="button-prompt">Enter</span> / <span className="button-prompt">Space</span> : Confirm Selection</h4>
-        </div>
       </div>
     </div>
   );
@@ -76,7 +82,8 @@ Select.propTypes = {
   menu: PropTypes.object.isRequired,
   player: PropTypes.object,
   game: PropTypes.object,
-  saves: PropTypes.object
+  saves: PropTypes.object,
+  difficulty: PropTypes.string
 }
 
 export default Select;

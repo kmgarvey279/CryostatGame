@@ -52,12 +52,12 @@ export function toggleTextInput(textInput) {
 
 //Initial State
 const initialState = {
-  activeText: null,
-  activeTextType: null,
+  activeText: '',
+  activeTextType: '',
   line: 0,
   paragraph: 1,
-  options: [],
-  selectedOption: 1,
+  options: null,
+  selectedOption: 0,
   textInput: false,
 }
 

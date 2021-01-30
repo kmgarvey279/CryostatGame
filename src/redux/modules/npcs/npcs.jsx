@@ -6,6 +6,7 @@ export const UPDATE_NPC_LOCATION = "UPDATE_NPC_LOCATION";
 export const UPDATE_NPC_DIRECTION = "UPDATE_NPC_DIRECTION";
 export const UPDATE_NPC_STATUS = "UPDATE_NPC_STATUS";
 export const UPDATE_NPC_TEXT = "UPDATE_NPC_TEXT";
+export const NULL_NPC = "NULL_NPC";
 export const NULL_NPCS = "NULL_NPCS";
 
 //Action Creators
@@ -51,6 +52,13 @@ export function updateNPCText(kind, text) {
       text: text
     }
   }
+
+export function nullNPC(kind) {
+  return {
+      type: NULL_NPC,
+      kind: kind
+    }
+}
 
 export function nullNPCs() {
     return {
@@ -101,6 +109,11 @@ const npcsReducer = (state = {}, action) => {
             [kind]: newNPC
         });
         return newState;
+    case NULL_NPC:
+      newState = Object.assign({}, state, {
+          [kind]: {}
+      });
+      return newState;
     case NULL_NPCS:
         return {};
   default:

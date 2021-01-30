@@ -11,7 +11,7 @@ class Title extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(soundsModule.changeEffect('title'));
+    // this.props.dispatch(soundsModule.changeMusic('bgm1'));
   }
   
   render() {

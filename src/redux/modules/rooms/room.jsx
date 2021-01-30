@@ -9,8 +9,10 @@ export const UPDATE_SPRITE = "UPDATE_SPRITE";
 export const UPDATE_EMOTE = "UPDATE_EMOTE";
 export const UPDATE_TRANSITION = "UPDATE_TRANSITION";
 export const TOGGLE_ALERT = "TOGGLE_ALERT";
+export const UPDATE_PLAYER_BULLET = "UPDATE_PLAYER_BULLET";
 export const UPDATE_BULLET = "UPDATE_BULLET";
 export const SET_EXPLOSION = "SET_EXPLOSION";
+export const SET_WATERDROP = "SET_WATERDROP";
 export const SET_WARNING = "SET_WARNING";
 export const SET_SHATTER = "SET_SHATTER";
 export const SET_TILE_OVERLAY = "SET_TILE_OVERLAY";
@@ -21,7 +23,7 @@ export function nullRoom() {
     type: NULL_ROOM,
   };
 }
-export function addSquare(newSquareId, newValue, newContent, newTileImage, newSprite, newTransition, alertBool, explosion = null, bullet = null, warning = false, shatter = 'none', newTileOverlay = 'none', newEmote = null) {
+export function addSquare(newSquareId, newValue, newContent, newTileImage, newSprite, newTransition, alertBool, explosion = null, playerBullet = [], bullet = [], warning = false, shatter = 'none', newTileOverlay = 'none', newEmote = null, waterdrop = false) {
   return {
     type: ADD_SQUARE,
     squareId: newSquareId,
@@ -32,8 +34,10 @@ export function addSquare(newSquareId, newValue, newContent, newTileImage, newSp
     emote: newEmote,
     transition: newTransition,
     alert: alertBool,
+    playerBullet: playerBullet,
     bullet: bullet,
     explosion: explosion,
+    waterdrop: waterdrop,
     warning: warning,
     shatter: shatter,
     tileOverlay: newTileOverlay
@@ -83,6 +87,14 @@ export function toggleAlert(squareId, alertBool){
   }
 }
 
+export function updatePlayerBullet(squareId, playerBullet){
+  return {
+    type: UPDATE_PLAYER_BULLET,
+    squareId: squareId,
+    playerBullet: playerBullet
+  }
+}
+
 export function updateBullet(squareId, bullet){
   return {
     type: UPDATE_BULLET,
@@ -115,6 +127,14 @@ export function setShatter(squareId, shatter){
   }
 }
 
+export function setWaterdrop(squareId, waterdrop){
+  return {
+    type: SET_WATERDROP,
+    squareId: squareId,
+    waterdrop: waterdrop
+  }
+}
+
 export function setTileOverlay(squareId, tileOverlay){
   return {
     type: SET_TILE_OVERLAY,
@@ -129,7 +149,7 @@ export function setTileOverlay(squareId, tileOverlay){
 const roomReducer = (state = {}, action) => {
   let newState;
   let newSquare;
-  const { squareId, value, content, tileImage, sprite, emote, transition, alert, bullet, explosion, warning, shatter, tileOverlay} = action;
+  const { squareId, value, content, tileImage, sprite, emote, transition, alert, playerBullet, bullet, explosion, warning, shatter, tileOverlay, waterdrop} = action;
 
   switch (action.type) {
     case NULL_ROOM:
@@ -147,10 +167,12 @@ const roomReducer = (state = {}, action) => {
             transition: transition,
             alert: alert,
             bullet: bullet,
+            playerBullet: playerBullet,
             explosion: explosion,
             warning: warning,
             shatter: shatter,
-            tileOverlay: tileOverlay
+            tileOverlay: tileOverlay,
+            waterdrop: waterdrop
           }
         });
         return newState;
@@ -190,12 +212,21 @@ const roomReducer = (state = {}, action) => {
         [squareId]: newSquare
       });
         return newState;
+
     case UPDATE_BULLET:
       newSquare = Object.assign({}, state[squareId], {bullet});
       newState = Object.assign({}, state, {
         [squareId]: newSquare
       });
         return newState;
+
+    case UPDATE_PLAYER_BULLET:
+      newSquare = Object.assign({}, state[squareId], {playerBullet});
+      newState = Object.assign({}, state, {
+        [squareId]: newSquare
+      });
+        return newState;
+        
     case SET_EXPLOSION:
       newSquare = Object.assign({}, state[squareId], {explosion});
       newState = Object.assign({}, state, {
@@ -210,6 +241,12 @@ const roomReducer = (state = {}, action) => {
           return newState;
     case SET_SHATTER:
       newSquare = Object.assign({}, state[squareId], {shatter});
+      newState = Object.assign({}, state, {
+        [squareId]: newSquare
+      });
+        return newState;
+    case SET_WATERDROP:
+      newSquare = Object.assign({}, state[squareId], {waterdrop});
       newState = Object.assign({}, state, {
         [squareId]: newSquare
       });

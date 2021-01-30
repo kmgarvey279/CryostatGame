@@ -4,6 +4,8 @@ import React from 'react';
 export const UPDATE_PLAYER_NAME = "UPDATE_PLAYER_NAME";
 export const UPDATE_PLAYER_HEALTH = "UPDATE_PLAYER_HEALTH";
 export const UPDATE_PLAYER_MAGIC = "UPDATE_PLAYER_MAGIC";
+export const UPDATE_PLAYER_STAMINA = "UPDATE_PLAYER_STAMINA";
+export const UPDATE_STAMINA_RECOVER = "UPDATE_STAMINA_RECOVER";
 export const UPDATE_PLAYER_STATUS = "UPDATE_PLAYER_STATUS";
 export const TOGGLE_COOLDOWN = "TOGGLE_COOLDOWN";
 export const UPDATE_PLAYER_LOCATION = "UPDATE_PLAYER_LOCATION";
@@ -15,13 +17,12 @@ export const UPDATE_SKILLS = "UPDATE_SKILLS";
 export const ADD_ITEM_TO_INVENTORY = "ADD_ITEM_TO_INVENTORY";
 export const UPDATE_NEW_ITEM = "UPDATE_NEW_ITEM";
 export const LOAD_PLAYER = "LOAD_PLAYER";
-export const UPDATE_ENTANGLEMENT = "UPDATE_ENTANGLEMENT";
 export const UPDATE_CLONE = "UPDATE_CLONE";
 export const SWITCH_ACTIVE_CLONE = "SWITCH_ACTIVE_CLONE";
 export const GET_MAP = "GET_MAP";
-export const UPGRADE_CRYOSTAT = "UPGRADE_CRYOSTAT";
 export const UPDATE_PIPE = "UPDATE_PIPE";
 export const CHANGE_ATTACK_TYPE = "CHANGE_ATTACK_TYPE";
+export const TOGGLE_CHARGE = "TOGGLE_CHARGE";
 
 //Action Creators
 export function loadPlayer(playerToLoad) {
@@ -46,6 +47,18 @@ export function updatePlayerMagic(newMagic) {
   return {
     type: UPDATE_PLAYER_MAGIC,
     magic: newMagic
+  };
+}
+export function updatePlayerStamina(newStamina) {
+  return {
+    type: UPDATE_PLAYER_STAMINA,
+    stamina: newStamina
+  };
+}
+export function updateStaminaRecover(newBool) {
+  return {
+    type: UPDATE_STAMINA_RECOVER,
+    staminaRecover: newBool
   };
 }
 export function updatePlayerLocation(newLocation) {
@@ -121,13 +134,6 @@ export function updateNewItem(newItem){
   }
 }
 
-export function updateEntanglement(entanglement){
-  return {
-    type: UPDATE_ENTANGLEMENT,
-    entanglement: entanglement
-  }
-}
-
 export function updateClone(cloneLocation, cloneDirection){
   return {
     type: UPDATE_CLONE,
@@ -149,9 +155,10 @@ export function getMap(){
   }
 }
 
-export function upgradeCryostat(){
+export function toggleCharge(chargeBool){
   return {
-    type: UPGRADE_CRYOSTAT
+    type: TOGGLE_CHARGE,
+    charge: chargeBool
   }
 }
 
@@ -159,31 +166,32 @@ export function upgradeCryostat(){
 const initialState = {
     name: 'Claire',
     pipe: null,
-    health: 50,
-    entanglement: 0,
+    health: 100,
     magic: 100,
-    status: 'stand',
+    stamina: 50,
+    staminaRecover: false,
+    status: 'sit',
     coolDown: false,
     direction: 'south',
-    location: 35,
+    location: 111,
     attackType: 'melee',
-    currentWeapon: 'Cryostat',
-    weapons: ['Cryostat', 'Taser'],
-    currentSkill: 'clone',
-    skills: ['clone', 'dash'],
-    items: ['bracelet'],
+    currentWeapon: 'Taser',
+    weapons: ['Taser'],
+    currentSkill: 'dash', 
+    skills: ['dash'],
+    items: ['pipe', 'bracelet'],
     newItem: null,
     cloneLocation: null,
     cloneDirection: null,
     activeClone: 1,
-    hasMap: true,
-    cryostatUpgrade: false
+    hasMap: false,
+    charge: false
   };
 
 //Reducer
 export default function playerReducer(state = initialState, action){
   let newState;
-  const { playerToLoad, name, health, magic, location, direction, pipe, attackType, currentWeapon, currentSkill, status, coolDown, weapons, skills, items, newItem, entanglement, cloneLocation, cloneDirection, activeClone } = action;
+  const { playerToLoad, name, health, magic, stamina, staminaRecover, location, direction, pipe, attackType, currentWeapon, currentSkill, status, coolDown, weapons, skills, items, newItem, cloneLocation, cloneDirection, activeClone, charge} = action;
 
   switch (action.type) {
     case LOAD_PLAYER:
@@ -201,6 +209,16 @@ export default function playerReducer(state = initialState, action){
     case UPDATE_PLAYER_MAGIC:
       newState = Object.assign({}, state, {
         magic: magic
+      });
+      return newState;
+    case UPDATE_PLAYER_STAMINA:
+      newState = Object.assign({}, state, {
+        stamina: stamina
+      });
+      return newState;
+    case UPDATE_STAMINA_RECOVER:
+      newState = Object.assign({}, state, {
+        staminaRecover: staminaRecover
       });
       return newState;
     case UPDATE_PLAYER_LOCATION:
@@ -263,11 +281,6 @@ export default function playerReducer(state = initialState, action){
         newItem: newItem
       });
       return newState;
-    case UPDATE_ENTANGLEMENT:
-      newState = Object.assign({}, state, {
-        entanglement: entanglement
-      });
-      return newState;
     case UPDATE_CLONE:
       newState = Object.assign({}, state, {
         cloneLocation: cloneLocation,
@@ -284,9 +297,9 @@ export default function playerReducer(state = initialState, action){
         hasMap: true
       });
       return newState;
-    case UPGRADE_CRYOSTAT:
+    case TOGGLE_CHARGE:
       newState = Object.assign({}, state, {
-        upgradeCryostat: true
+        charge: charge
       });
       return newState;
     default:

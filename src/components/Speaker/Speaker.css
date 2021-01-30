@@ -1,51 +1,158 @@
 
 #speaker-text {
-  padding: 2px;
-  font-size: 27px;
-  padding-left: 10px;
-  top: -4px;
+  padding: 10px;
+  font-size: 30px;
+  padding-left: 15px;
+  top: -2px;
   position: relative;
 }
 
 .claire-speaker{
   position: relative;
-  height: 26px;
-  min-width: 50px;
-  width: 240px;
+  height: 35px;
+  width: 100px;
   z-index: 2000;
   overflow:visible;
-  top: -10px;
-  left: -30px;
-  border: solid purple;
-  background-color: darkorchid;
+  top: -50px;
+  left: -3px;
+  border: solid 3px whitesmoke;
+  border-radius: 3px;
+  background-color: rgb(69, 7, 100);
 }
 
 .mutiny-speaker{
   position: relative;
-  height: 26px;
+  height: 35px;
+  width: 120px;
+  z-index: 2000;
+  overflow:visible;
+  top: -50px;
+  left: -3px;
+  border: solid 3px whitesmoke;
+  border-radius: 3px;
+  background: rgb(2,8,84);
+  background: linear-gradient(0deg, rgba(2,8,84,1) 0%, rgba(2,8,48,1) 43%);
+}
+
+.mutiny-speaker-long{
+  position: relative;
+  height: 35px;
+  width: 235px;
+  z-index: 2000;
+  overflow:visible;
+  top: -50px;
+  left: -3px;
+  border: solid 3px whitesmoke;
+  border-radius: 3px;
+  background: rgb(2,8,84);
+  background: linear-gradient(0deg, rgba(2,8,84,1) 0%, rgba(2,8,48,1) 43%);
+}
+
+.lucy-speaker{
+  position: relative;
+  height: 35px;
+  min-width: 50px;
+  width: 90px;
+  z-index: 2000;
+  overflow:visible;
+  top: -50px;
+  left: -3px;
+  border: solid 3px whitesmoke;
+  border-radius: 3px;
+  background-color: rgb(194, 4, 194) !important;
+}
+
+@keyframes lucyFuture {
+  0%  {filter: brightness(100%);}
+  50%  {filter: brightness(120%);}
+  100%  {filter: brightness(100%);}
+}
+
+
+
+.blaine-speaker{
+  position: relative;
+  height: 30px;
   min-width: 50px;
   width: 240px;
   z-index: 2000;
   overflow:visible;
   top: -10px;
-  left: -30px;
+  left: -3px;
+  opacity: 0.9;
+  border: solid 3px darkred  !important;
+  background-color:rgb(199, 13, 13) !important;
+}
+
+.shad-speaker{
+  position: relative;
+  height: 30px;
+  min-width: 50px;
+  width: 240px;
+  z-index: 2000;
+  overflow:visible;
+  top: -10px;
+  left: -3px;
   opacity: 0.9;
   border: solid navy  !important;
   background-color: slateblue !important;
 }
 
-.default-speaker{
+.president-speaker{
   position: relative;
-  height: 26px;
+  height: 30px;
   min-width: 50px;
   width: 240px;
   z-index: 2000;
   overflow:visible;
   top: -10px;
-  left: -30px;
+  left: -3px;
   opacity: 0.9;
-  background-color:yellow; 
-  border: 3px solid darkorange; 
+  border: 3px solid goldenrod  !important;
+  background-color: whitesmoke !important;
+  animation: lucyFuture 900ms infinite;
+}
+
+.default-speaker{
+  position: relative;
+  height: 35px;
+  min-width: 50px;
+  width: 75px;
+  z-index: 2000;
+  overflow:visible;
+  top: -50px;
+  left: -3px;
+  border: solid 3px whitesmoke;
+  border-radius: 3px;
+  background-color: rgb(55, 63, 63); 
+}
+
+.default-speaker-long{
+  position: relative;
+  height: 35px;
+  min-width: 220px;
+  width: 220px;
+  z-index: 2000;
+  overflow:visible;
+  top: -50px;
+  left: -3px;
+  border: solid 3px whitesmoke;
+  border-radius: 3px;
+  background-color: rgb(55, 63, 63); 
+}
+
+.null-speaker{
+  position: relative;
+  height: 30px;
+  min-width: 50px;
+  width: 240px;
+  z-index: 2000;
+  overflow:visible;
+  top: -10px;
+  left: -3px;
+  opacity: 0;
+  background-color: lightsteelblue; 
+  border: 3px solid darkslategray; 
 }
 
 .claire-portrait {
@@ -57,4 +164,9 @@
   top: -42.5px;
   left: 35vw;
   position: absolute;
+}
+
+.shad-speaker {
+  border: 3px solid rgb(13, 48, 13)  !important;
+  background-color: rgb(18, 99, 53) !important;
 }

@@ -18,10 +18,7 @@ class SFX extends React.Component {
 
   render() {
     let effect = effects[this.props.sounds.effect];
-    let loop = false;
-    if (this.props.sounds.effect === 'phone') {
-      loop = true;
-    };
+    let vol = 50;
     return (
       <div>
        <Sound
@@ -29,8 +26,8 @@ class SFX extends React.Component {
         onFinishedPlaying={this.handleClearSFX}
         playStatus={Sound.status.PLAYING}
         playbackRate={this.props.playbackRate}
-        loop={loop}
-        volume={75}/>
+        loop={true}
+        volume={vol}/>
       </div>
     );
   }
@@ -38,6 +35,7 @@ class SFX extends React.Component {
 
 SFX.propTypes = {
   sounds: PropTypes.object,
+  mindDepth: PropTypes.number
 }
 
 function mapDispatchToProps(dispatch) {

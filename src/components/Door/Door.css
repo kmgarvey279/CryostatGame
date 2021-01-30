@@ -1,22 +1,52 @@
 div#doorNorth {
-  z-index: 500;
+  z-index: 100;
   position: absolute;
-  top: 0.3px;
+  top: -30px;
 }
 
 div#doorEast {
   z-index: 10;
   position: absolute;
-  top: -12px;
+  top: -24px;
 }
 
 div#doorSouth {
   z-index: 10;
   position: absolute;
+  top: -9px;
 }
 
 div#doorWest {
   z-index: 10;
   position: absolute;
-  top: -12px;
+  top: -32px;
+}
+
+.prologue-door-west {
+  left: -17px;
+}
+
+.prologue-door-south {
+  position: absolute;
+  top: 2px;
+}
+
+.prologue-door-top{
+  position: absolute;
+  top: 11px;
+}
+
+.door-top{
+  top: -31px;
+}
+
+.door-bottom{
+  position: absolute;
+  top: 8px;
+}
+
+.door-cover{
+  top: -11px;
+  z-index: 100;
+  position: absolute;
 }

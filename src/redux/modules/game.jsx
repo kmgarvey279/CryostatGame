@@ -22,6 +22,10 @@ export const TOGGLE_LIGHTS = "TOGGLE_LIGHTS";
 export const CHANGE_FILTER = "CHANGE_FILTER";
 export const TOGGLE_DISPLAY_BRANCH = "TOGGLE_DISPLAY_BRANCH";
 export const TOGGLE_SPECIAL = "TOGGLE_SPECIAL";
+export const CHANGE_MIND_DEPTH = "CHANGE_MIND_DEPTH";
+export const CHANGE_DIFFICULTY = "CHANGE_DIFFICULTY";
+export const TOGGLE_POWER_LEFT = "TOGGLE_POWER_LEFT";
+export const TOGGLE_POWER_RIGHT = "TOGGLE_POWER_RIGHT";
 
 
 //Action Creators
@@ -169,11 +173,41 @@ export function toggleSkill(newBool) {
     }
   }
 
+  export function changeMindDepth(newDepth) {
+    return {
+      type: CHANGE_MIND_DEPTH,
+      mindDepth: newDepth
+    }
+  }
+
+  export function changeDifficulty(newDifficulty) {
+    return {
+      type: CHANGE_DIFFICULTY,
+      difficulty: newDifficulty
+    }
+  }
+
+  export function togglePowerLeft(newBool) {
+    return {
+      type: TOGGLE_POWER_LEFT,
+      powerLeft: newBool
+    }
+  }
+
+  export function togglePowerRight(newBool) {
+    return {
+      type: TOGGLE_POWER_RIGHT,
+      powerRight: newBool
+    }
+  }
+
+
 //Initial State
 const initialState = {
-  branch: 'prologue',
-  roomId: 1,
-  previousRoomId: null,
+  branch: 2,
+  difficulty: 'normal',
+  roomId: 5,
+  previousRoomId: 'hallway2',
   gameState: 'title',
   respawnPoint: '',
   timers: [],
@@ -189,13 +223,16 @@ const initialState = {
   filter: '',
   destination: '',
   displayBranch: false,
-  special: false
+  special: false,
+  powerRight: true,
+  powerLeft: false,
+  mindDepth: 0
 }
 
 //Reducer
 const gameReducer = (state = initialState, action) => {
   let newState;
-  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire,  skill, timers, filter, file, branch, eye, destination, lights, displayBranch, special} = action;
+  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, difficulty, north, east, west, south, fire,  skill, timers, filter, file, branch, eye, destination, lights, displayBranch, special, mindDepth, powerLeft, powerRight} = action;
   switch (action.type) {
     case LOAD_GAME:
       return gameToLoad;
@@ -297,6 +334,26 @@ const gameReducer = (state = initialState, action) => {
     case TOGGLE_SPECIAL:
       newState = Object.assign({}, state, {
         special: special
+      });
+        return newState;
+    case CHANGE_MIND_DEPTH:
+      newState = Object.assign({}, state, {
+        mindDepth: mindDepth
+      });
+        return newState;
+    case CHANGE_DIFFICULTY:
+      newState = Object.assign({}, state, {
+        difficulty: difficulty
+      });
+        return newState;
+    case TOGGLE_POWER_LEFT:
+      newState = Object.assign({}, state, {
+        powerLeft: powerLeft
+      });
+        return newState;
+    case TOGGLE_POWER_RIGHT:
+      newState = Object.assign({}, state, {
+        powerRight: powerRight
       });
         return newState;
   default:

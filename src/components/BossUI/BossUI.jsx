@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './BossUI.css';
-import bossBar from '../../assets/images/items/boss-bar.png';
 import bossBeam from '../../assets/images/items/boss-beam.gif';
 
 function BossUI(props){

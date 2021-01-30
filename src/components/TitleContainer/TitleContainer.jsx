@@ -10,12 +10,15 @@ import { withRouter } from 'react-router-dom';
 import Select from '../Select/Select';
 import Title from '../Title/Title';
 import Error from '../Error/Error';
-import BranchSelect from '../BranchSelect/BranchSelect';
 import './TitleContainer.css';
+import * as soundConsts from '../App/SoundsLibrary';
 
 class TitleContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      difficulty: 'normal'
+    };
     this.handleKeyPress = this.handleKeyPress.bind(this);
   };
 
@@ -28,7 +31,15 @@ class TitleContainer extends React.Component {
   };
 
   handleKeyPress(event){
-    if (this.props.menu.selectedMenu !== 'title'){
+    if(this.props.menu.selectedMenu === 'start'){
+      if(event.keyCode === 37 || event.keyCode === 65){
+        event.preventDefault();
+        this.cycleOption(-1);
+      } else if(event.keyCode === 39 || event.keyCode === 68){
+        event.preventDefault();
+        this.cycleOption(1);
+      };
+    } else if(this.props.menu.selectedMenu !== 'title'){
       if(event.keyCode === 38 || event.keyCode === 87){
         event.preventDefault();
         this.cycleOption(-1);
@@ -44,96 +55,67 @@ class TitleContainer extends React.Component {
   };
 
   cycleOption(direction) {
-    this.props.dispatch(soundsModule.changeEffect('select'));
-    let nextOption = this.props.menu.selectedOption + direction;
-    if (nextOption > 6) {
-      this.props.dispatch(menuModule.changeOption(1));
-    } else if (nextOption <= 0) {
-      this.props.dispatch(menuModule.changeOption(6));
+    soundConsts.select.play();
+    if(this.props.menu.selectedMenu === 'start'){
+      if(this.state.difficulty === 'normal'){
+        this.setState({
+          difficulty: 'hard'
+        });
+        this.props.dispatch(gameModule.changeDifficulty('hard'));
+      } else {
+        this.setState({
+          difficulty: 'normal'
+        });
+        this.props.dispatch(gameModule.changeDifficulty('normal'));
+      }
     } else {
-      this.props.dispatch(menuModule.changeOption(nextOption));
+      let nextOption = this.props.menu.selectedOption + direction;
+      if (nextOption > 6) {
+        this.props.dispatch(menuModule.changeOption(1));
+      } else if (nextOption <= 0) {
+        this.props.dispatch(menuModule.changeOption(6));
+      } else {
+        this.props.dispatch(menuModule.changeOption(nextOption));
+      };
     }
   };
 
   selectOption(){
     let selectNum = this.props.menu.selectedOption;
     //Title Screen
-    if (this.props.menu.selectedMenu == 'title' && this.props.game.gameState == 'postExitBranch'){
-      this.props.dispatch(menuModule.changeMenu('branchSelect'));
-      this.props.dispatch(soundsModule.changeEffect('ping'));
-      this.props.dispatch(soundsModule.changeMusic('title'));
-    } else if (this.props.menu.selectedMenu == 'title') {
+    if (this.props.menu.selectedMenu == 'title') {
       this.props.dispatch(menuModule.changeMenu('select'));
-      this.props.dispatch(soundsModule.changeEffect('ping'));
+      soundConsts.ping.play();
       this.props.dispatch(soundsModule.changeMusic('title'));
-    //select branch
-    } else if (this.props.menu.selectedMenu == 'branchSelect') {
-      if (selectNum <= 3) {
-        //set the new file which will continue the game
-        let nextFile;
-        if (this.props.game.branch === 1){
-          if (this.props.game.file == 3) {
-            nextFile = 2;
-          } else {
-            nextFile = this.props.game.file + 1;
-          };
-        } else {
-          nextFile = this.props.game.file;
-        };
-        if (this.props.game.branch === 1){
-          if (selectNum == this.props.game.file) {
-            this.props.handleLoad();
-          } else if (selectNum == nextFile) {
-            this.props.handleStart();
-            this.props.dispatch(menuModule.changeOption(1));
-          } else {
-            this.props.dispatch(soundsModule.changeEffect('doorLocked'));
-          };
-        } else {
-          if (selectNum == nextFile) {
-            this.props.handleStart();
-            this.props.dispatch(menuModule.changeOption(1));
-          } else if(this.props.game.file === 3){
-              if (selectNum == 2) {
-                this.props.handleLoad();
-              };
-          } else {
-            if (selectNum == nextFile + 1) {
-                this.props.handleLoad();
-            } else {
-              this.props.dispatch(soundsModule.changeEffect('doorLocked')); 
-            }
-          };
-        };
-      } else if (selectNum == 4) {
-        this.props.dispatch(soundsModule.changeEffect('doorLocked'));
-      } else if (selectNum == 5) {
-        this.props.dispatch(soundsModule.changeEffect('doorLocked'));
-      } else if (selectNum == 6) {
-        this.props.dispatch(menuModule.changeMenu('title'));
-      }
     //select file
     } else if (this.props.menu.selectedMenu == 'select'){
       if (selectNum <= 3) {
         this.props.dispatch(gameModule.setFile(selectNum));
-        if (this.props.saves[selectNum].fileStatus === 'empty') {
-          this.props.handleStart();
+        if(this.props.saves[selectNum].fileStatus === 'empty') {
+          this.props.dispatch(menuModule.changeMenu('start'));
         } else {
+          soundConsts.entangle.play();
           this.props.handleLoad();
+          this.props.dispatch(menuModule.changeMenu('title'));
+          this.props.dispatch(menuModule.changeOption(1));
         }
-        this.props.dispatch(menuModule.changeMenu('title'));
-        this.props.dispatch(menuModule.changeOption(1));
       } else if (selectNum == 4) {
         this.props.dispatch(menuModule.changeMenu('delete'));
       } else if (selectNum == 5) {
         this.props.dispatch(menuModule.changeMenu('copy'));
       } else if (selectNum == 6) {
         this.props.dispatch(menuModule.changeMenu('title'));
-      }
+      };
+    //File Start
+    } else if (this.props.menu.selectedMenu == 'start'){
+      soundConsts.entangle.play();
+      this.props.handleStart();
+      this.props.dispatch(menuModule.changeMenu('title'));
+      this.props.dispatch(menuModule.changeOption(1));
     //File Delete
     } else if (this.props.menu.selectedMenu == 'delete'){
       if (selectNum <= 3) {
-        this.props.dispatch(soundsModule.changeEffect('dead'));
+        soundConsts.dead.play();
         this.props.dispatch(savesModule.eraseGame(selectNum))
       } else if (selectNum == 4) {
         this.props.dispatch(menuModule.changeMenu('select'));
@@ -159,7 +141,7 @@ class TitleContainer extends React.Component {
       if (selectNum <= 3) {
         if (selectNum === this.props.menu.gameToCopy) {
         } else {
-          this.props.dispatch(soundsModule.changeEffect('merge'));
+          soundConsts.merge.play();
           this.props.dispatch(savesModule.copyGame(selectNum, this.props.saves[this.props.menu.gameToCopy]));
           this.props.dispatch(menuModule.setGameToCopy(null));
         }
@@ -183,22 +165,10 @@ class TitleContainer extends React.Component {
           <Title/>
         </div>
       );
-    } else if (this.props.menu.selectedMenu === 'branchSelect') {
-      return (
-        <div>
-          <BranchSelect menu={this.props.menu} game={this.props.game} player={this.props.player} saves={this.props.saves}/>
-        </div>
-      );
-    } else if (this.props.menu.selectedMenu === 'error') {
-      return (
-        <div>
-          <Error />
-        </div>
-      );
     } else {
       return (
         <div>
-          <Select menu={this.props.menu} game={this.props.game} player={this.props.player} saves={this.props.saves}/>
+          <Select difficulty={this.state.difficulty} menu={this.props.menu} game={this.props.game} player={this.props.player} saves={this.props.saves}/>
         </div>
       );
     }

@@ -5,10 +5,11 @@ import MPBar from '../MPBar/MPBar';
 import * as playerConsts from '../../redux/modules/player/playerConstants';
 import './GameUITop.css';
 import taserIcon from '../../assets/images/items/taserIcon.png';
-import cryoIcon from '../../assets/images/items/cryoIcon.png';
-import collider from '../../assets/images/items/collider.png';
-import clone from '../../assets/images/items/clone.png';
+import cryoIcon from '../../assets/images/items/cryo2Icon.png';
+import dash from '../../assets/images/items/collider.gif';
+import clone from '../../assets/images/items/clone.gif';
 import heart from '../../assets/images/items/heart.gif';
+import halfHeart from '../../assets/images/items/heart-half.gif';
 import heartless from '../../assets/images/items/heartless.gif';
 import particle from '../../assets/images/items/entangle.gif';
 import selected from '../../assets/images/items/selected-items.png';
@@ -25,15 +26,11 @@ function GameUITop(props) {
   } else if (props.player.currentWeapon === 'Cryostat') {
     weaponIcon = <img id="current-weapon" src={cryoIcon} width="40" height="40"/>
   };
-  let entanglement = props.player.entanglement + '%';
-  if(props.player.entanglement < 10) {
-    entanglement = <span className="single-digit">{entanglement}</span>
-  };
   let skillIcon = '';
   if (props.player.currentSkill === null || props.game.gameState === 'postExitBranch' || props.game.gameState === 'exitBranch') {
     skillIcon = '';
   } else if (props.player.currentSkill === 'dash') {
-    skillIcon = <img id="current-skill" src={collider} width="40" height="40"/>
+    skillIcon = <img id="current-skill" src={dash} width="40" height="40"/>
   } else if (props.player.currentSkill === 'clone') {
     skillIcon = <img id="current-skill" src={clone} width="40" height="40"/>
   };
@@ -44,30 +41,42 @@ function GameUITop(props) {
     magic = props.player.magic;
   }
   let uiClass;
-  if (props.player.items.includes('bracelet')){
+  if (props.player.items.includes('bracelet') && props.game.branch !== 'prologue'){
     uiClass = 'showUI';
   } else {
     uiClass = 'hideUI';
   };
+  let hpBar;
+  if(props.game.difficulty === 'hard'){
+    hpBar=<div id="hp-bar">
+      <label>
+        {props.player.health >= 10 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+        {props.player.health >= 20 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+        {props.player.health >= 30 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+        {props.player.health >= 40 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+        {props.player.health >= 50 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+      </label>
+    </div>
+  } else {
+    hpBar=<div id="hp-bar">
+      <label>
+        {props.player.health >= 20 ? <img  src={heart} width="50" height="50"/> : props.player.health >= 10 ? <img  src={halfHeart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+        {props.player.health >= 40 ? <img  src={heart} width="50" height="50"/> : props.player.health >= 30 ? <img  src={halfHeart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+        {props.player.health >= 60 ? <img  src={heart} width="50" height="50"/> : props.player.health >= 50 ? <img  src={halfHeart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+        {props.player.health >= 80 ? <img  src={heart} width="50" height="50"/> : props.player.health >= 70 ? <img  src={halfHeart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+        {props.player.health >= 100 ? <img  src={heart} width="50" height="50"/> : props.player.health >= 90 ? <img  src={halfHeart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
+      </label>
+    </div>
+  };
   return (
     <div id="UI-wrap" className={uiClass}>
       <div id="UI-content">
-        <div id="hp-bar">
-          <label>
-            {props.player.health >= 10 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
-            {props.player.health >= 20 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
-            {props.player.health >= 30 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
-            {props.player.health >= 40 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
-            {props.player.health >= 50 ? <img  src={heart} width="50" height="50"/> : <img src={heartless} width="50" height="50"/>} 
-          </label>
-        </div>
-        <img className="reset" src={reset} width="65" height="65"/>
-        <span id="particle-percentage">1</span>
-        <img id="selected-items" src={selected} width="175" height="58"/>
+        {hpBar}
+        <img id="selected-items" src={selected} width="430" height="58"/>
         <div id="melee-weapon" className={props.player.attackType === 'melee' ? "active-attack" : "inactive-attack"}>
           {meleeWeaponIcon}
         </div>
-        <div id="weapon" className={props.player.attackType === 'ranged' ? "active-attack" : "inactive-attack"}>
+        <div id="weapon" className={props.player.charge === true ? "charged-attack" : props.player.attackType === 'ranged' ? "active-attack" : "inactive-attack"}>
           {weaponIcon}  
         </div>
         <div id="skill">
@@ -76,7 +85,6 @@ function GameUITop(props) {
         <div id="entangle-bar">
           <label>
             <span id="mp"><MPBar type={'entanglement'} magic={magic} /></span>
-            <img id="particle-icon" src={particle} width="176" height="60"/>
           </label>
         </div>
       </div>

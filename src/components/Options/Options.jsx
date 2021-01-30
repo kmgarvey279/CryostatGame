@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
+import * as gameModule from '../../redux/modules/game';
 import * as textModule from '../../redux/modules/text/text';
-import * as menuModule from '../../redux/modules/menu';
 import * as soundsModule from '../../redux/modules/sounds';
+import * as soundConsts from '../App/SoundsLibrary';
 import './Options.css';
 
 class Options extends React.Component {
@@ -14,72 +15,83 @@ class Options extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyPress, false);
+    document.addEventListener('keyup', this.handleKeyPress, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyPress, false);
+    document.removeEventListener('keyup', this.handleKeyPress, false);
   }
 
   handleKeyPress(event){
-    if(event.keyCode === 38 || event.keyCode === 40 || event.keyCode === 87 || event.keyCode === 83){
-      this.cycleOption();
-    } else if(event.keyCode === 40){
-      this.cycleOption();
-    } else if (event.keyCode === 32 || event.keyCode === 13) {
+    if(event.keyCode === 38 || event.keyCode === 87){
+      this.cycleOption(-1);
+    } else if(event.keyCode === 40 || event.keyCode === 83){
+      this.cycleOption(1);
+    } else if (event.keyCode === 32) {
       if (this.props.text.activeText.includes("terminal")){
-        this.props.dispatch(soundsModule.changeEffect('confirm'));
+        soundConsts.confirm.play();
       } else if(this.props.text.activeText === 'save') {
-        this.props.dispatch(soundsModule.changeEffect('merge'));
+        soundConsts.merge.play();
       };
+      if(this.props.text.selectedOption === 0 && (this.props.text.activeText === 'Lucy1' || this.props.text.activeText === 'Lucy1B' || this.props.text.activeText === 'Lucy1BB')){
+        this.props.dispatch(gameModule.changeFilter('fade-in'));
+        this.props.dispatch(soundsModule.changeEffect('birds'));
+      } else if(this.props.text.selectedOption === 0 && this.props.text.activeText === 'wakeUp1'){
+        this.props.dispatch(gameModule.changeFilter('fade-in'));
+      }
       this.props.dispatch(textModule.setLine(0));
       this.props.dispatch(textModule.setParagraph(1));
-      if(this.props.menu.selectedOption === 1) {
+      if(this.props.text.selectedOption === 0) {
         this.props.dispatch(textModule.setActiveText(this.props.text.activeText + 'A', this.props.text.activeTextType));
-      } else {
+      } else if (this.props.text.selectedOption === 1){
         this.props.dispatch(textModule.setActiveText(this.props.text.activeText + 'B', this.props.text.activeTextType));
-      }
-      this.props.dispatch(textModule.setOptions([]));
+      } else if (this.props.text.selectedOption === 2) {
+        this.props.dispatch(textModule.setActiveText(this.props.text.activeText + 'C', this.props.text.activeTextType));
+      };
+      this.props.dispatch(textModule.selectOption(0));
+      this.props.dispatch(textModule.setOptions(null));
     }
   }
 
-  cycleOption() {
-    this.props.dispatch(soundsModule.changeEffect('select'));
-    if (this.props.menu.selectedOption === 1) {
-      this.props.dispatch(menuModule.changeOption(2));
-    } else if (this.props.menu.selectedOption === 2){
-      this.props.dispatch(menuModule.changeOption(1));
+  cycleOption(next) {
+    soundConsts.select.play();
+    let newOption = this.props.text.selectedOption + next
+    if (newOption === this.props.text.options.length) {
+      this.props.dispatch(textModule.selectOption(0));
+    } else if (newOption < 0) {
+      this.props.dispatch(textModule.selectOption(this.props.text.options.length - 1));
+    } else {
+      this.props.dispatch(textModule.selectOption(newOption));
     }
+  }
+
+  isSelected(optionNum){
+    if(optionNum === this.props.text.selectedOption){
+      return 'selected-option';
+    };
   }
 
   render(){
-    if (this.props.menu.selectedOption == 1) {
-      return (
-        <div className="options-wrap">
-          <div id="selectedOption">{this.props.text.options[0]}</div>
-          {this.props.text.options[1]}
-        </div>
-      );
-    } else {
-      return (
-        <div className="options-wrap">
-          {this.props.text.options[0]}
-          <div id="selectedOption">{this.props.text.options[1]}</div>
-        </div>
-      );
-    }
+    let options = [];
+    for(let i = 0; i < this.props.text.options.length; i++){
+      options.push(<div id={this.isSelected(i)}>{this.props.text.options[i]}</div>)
+    };
+    return (
+      <div className="options-wrap">
+        {options}
+      </div>
+    );
   }
 }
 
 Options.propTypes = {
-  menu: PropTypes.object,
   text: PropTypes.object
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     textModule: bindActionCreators(textModule, dispatch),
-    menuModule: bindActionCreators(menuModule, dispatch),
+    gameModule: bindActionCreators(gameModule, dispatch),
     soundsModule: bindActionCreators(soundsModule, dispatch)
   }
 }

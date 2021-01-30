@@ -1,5 +1,5 @@
 div.boss-ui-wrap {
-    position: fixed;
+    position: absolute;
     z-index: 2000;
     left: 0;
     top: 0;

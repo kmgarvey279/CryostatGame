@@ -3,6 +3,7 @@ export const LOAD_DOORS = "LOAD_DOORS";
 export const CREATE_DOOR = "CREATE_DOOR";
 export const UPDATE_DOOR_LOCK = "UPDATE_DOOR_LOCK";
 export const UPDATE_DOOR_STATUS = "UPDATE_DOOR_STATUS";
+export const NULL_ALL_DOORS = "NULL_ALL_DOORS";
 
 //Action Creators
 export function loadDoors(doorsToLoad){
@@ -37,6 +38,12 @@ export function updateDoorStatus(doorId, newStatus) {
     type: UPDATE_DOOR_STATUS,
     doorId: doorId,
     status: newStatus
+  }
+};
+
+export function nullAllDoors() {
+  return {
+    type: NULL_ALL_DOORS
   }
 };
 
@@ -75,6 +82,8 @@ const doorReducer = (state = {}, action) => {
         [doorId]: newDoor
       });
       return newState;
+    case NULL_ALL_DOORS:
+      return {};
   default:
     return state;
   }

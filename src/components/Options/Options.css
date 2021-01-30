@@ -1,9 +1,11 @@
-div#selectedOption {
-  background: linear-gradient(90deg, rgba(242,122,6,0) 0%, gold  70%, rgba(0,212,255,0) 100%);
+#selected-option {
+  background: linear-gradient(90deg, rgba(242,122,6,0) 0%, rgb(255, 255, 255)  70%, rgba(0,212,255,0) 100%);
   font-weight: bold;
+  color: black;
 }
 
 div.options-wrap {
+  padding-top: 15px;
   text-align: center;
-  font-size: 22px;
+  font-size: 30px;
 }

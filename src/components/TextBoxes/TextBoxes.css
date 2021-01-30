@@ -8,11 +8,14 @@ div#wrap {
   padding-top: 10%;
   overflow: auto;
   text-align: left;
+  color: white;
 }
 
 .progress-container{
-  padding-top: 5px;
-  width: 97%;
+  padding-top: 70px;
+  width: 90%;
+  margin-left: 30px;
+  margin-right: 10% auto;
 }
 
 .exit-text {
@@ -41,15 +44,33 @@ div#wrap {
 }
 
 div#box-content {
-  background-color:DarkOrange; 
-  border: 3px solid GoldenRod; 
-  width: 80%;
+  background-color: dimgray; 
+  border: 3px solid whitesmoke; 
+  border-radius: 3px;
+  width: 90%;
   min-width: 700px;
   max-width: 700px;
-  height: 180px;
+  height: 155px;
   margin: 10% auto;
-  margin-top: 420px;
-  padding-left: 15px;
+  margin-top: 460px;
+  position: sticky;
+  opacity: 0.9;
+}
+
+@media only screen and (min-width: 800px){
+  div#box-content {
+    background-color: dimgray; 
+    border: 3px solid whitesmoke; 
+    border-radius: 3px;
+    width: 90%;
+    min-width: 700px;
+    max-width: 700px;
+    height: 155px;
+    margin: 10% auto;
+    margin-top: 410px;
+    position: sticky;
+    opacity: 0.9;
+  }
 }
 
 div.special {
@@ -67,21 +88,22 @@ div.special {
 
 div#text-options {
   position: relative;
-  margin-top: 20px;
-  font-size: 27px;
+  padding-top: 80px;
+  font-size: 30px;
 }
 
 div#text{
-  position: relative;
-  margin-top: 20px;
-  font-size: 27px;
+  position: absolute;
+  font-size: 30px;
+  padding: 15px;
 }
 
 div#dialogueText {
-  position: relative;
-  top: -10px;
-  margin-top: 5px;
-  font-size: 27px;
+  position: absolute;
+  top: -5px;
+  font-size: 30px;
+  padding: 15px;
+  padding-left: 20px;
 }
 
 .next-button-prompt {
@@ -89,25 +111,55 @@ div#dialogueText {
   padding: 1px; 
 }
 
-.next-prompt {
-  position: relative;
-  color: gold ; 
+#next-prompt {
+  position: absolute;
   float: right;
-  top: 70px;
+  top: 135px;
+  right: 5px;
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid white;
+  animation: next 1.5s infinite;
 }
 
+@keyframes next {
+  0%  {opacity: 0.6}
+  50%  {opacity: 0.4;}
+  100%  {opacity: 0.6}
+}
+
+
+
 .claire-color{
-  border: solid purple !important;
-  background-color: plum !important;
+  background-color: darkviolet !important;
 }
 
 .mutiny-color{
-  border: solid navy  !important;
-  background-color: cornflowerblue !important;
+  background: rgb(16,25,141);
+  background: linear-gradient(0deg, rgba(16,25,141,1) 0%, rgba(3,12,73,1) 43%);
 }
 
-.dark-color{
-  color: white !important;
-  border: solid black !important;
-  background-color: black !important;
+.lucy-color{
+  background-color: rgb(202, 31, 202) !important;
+}
+#future-lucy{
+  animation: lucyFuture 900ms infinite;
+}
+
+.blaine-color{
+  border: solid darkred !important;
+  background-color: firebrick !important;
+}
+
+.president-color{
+  border: 3px solid goldenrod !important;
+  background-color: white !important;
+  animation: lucyFuture 900ms infinite;
+}
+
+.shad-color{
+  border: 3px solid rgb(13, 48, 13)  !important;
+  background-color: seagreen !important;
 }

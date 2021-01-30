@@ -7,7 +7,7 @@ import CharacterInfo from '../CharacterInfo/CharacterInfo';
 import Controls from '../Controls/Controls';
 import * as text from '../../redux/modules/text/textConstants';
 import './Map.css';
-import * as soundsModule from '../../redux/modules/sounds';
+import * as soundConsts from '../App/SoundsLibrary';
 
 class Map extends React.Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class Map extends React.Component {
   changeScreen = (direction) => {
     let newScreen = this.state.screen + direction;
     if(newScreen <= 2 && newScreen >= 0){
-      this.props.dispatch(soundsModule.changeEffect('select'));
+      soundConsts.select.play();
       this.setState({
         screen: newScreen
       });
@@ -143,10 +143,4 @@ Map.propTypes = {
   player: PropTypes.object.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    soundsModule : bindActionCreators(soundsModule, dispatch)
-  }
-};
-
-export default connect(mapDispatchToProps)(Map);
+export default Map;

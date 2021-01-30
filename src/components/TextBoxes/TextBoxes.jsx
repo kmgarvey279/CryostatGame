@@ -35,57 +35,66 @@ class TextBoxes extends React.Component {
     let paragraphToRender;
     let activeSpeaker;
     let speakerColor;
-    //get paragraph and speaker (if applicable)
-    if (this.props.text.activeTextType == 'dialogue' || this.props.text.activeText.includes('Window')){
-      activeSpeaker = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][0];
-      paragraphToRender = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][1];
-    }
-    if(activeSpeaker !== undefined){
-      if(activeSpeaker === 'Mutiny' || activeSpeaker === 'Intercom' || activeSpeaker === 'Spikey Haired Girl') {
-        speakerColor = 'mutiny-color';
-      } else if(activeSpeaker === 'Strange Voice 3') {
-        speakerColor = 'dark-color';
-      } else if (activeSpeaker === 'Confused Girl' || activeSpeaker === 'Claire') {
-        speakerColor = 'claire-color';
-      };
-    } else {
-      paragraphToRender = textConsts.examine[this.props.text.activeText][this.props.text.paragraph];
-    }
-    //get line
-    let lineToRender = paragraphToRender[this.props.text.line];
-    //download bar
-    if(this.props.text.activeText === 'mapTerminal'){
-      if(this.props.text.line === 0){
-        this.startDownload();
-      } else {
-        this.setState({
-          progress : 100
-        });
+    let lineToRender;
+    if(this.props.text.activeText !== '' && this.props.text.activeText !== undefined){
+      //get paragraph and speaker (if applicable)
+      if(this.props.text.activeTextType == 'dialogue'){
+        activeSpeaker = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][0];
+        paragraphToRender = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][1];
       }
-    }
-    //add special text styling
-    if(lineToRender.includes('ExitWound')){
-      let before = '';
-      let after = '';
-      let special = '';
-      let lineArr = lineToRender.split(" ");
-      for (let i=0; i < lineArr.length; i++){
-        if(lineArr[i] === 'ExitWound'){
-          special = <span className="exit-text">Exit Wound </span>
-          if(i > 0){
-            for(let j=0; j < i; j++){
-              before = before.concat(lineArr[j]) + ' ';
+      if(activeSpeaker !== undefined){
+        if(activeSpeaker === 'Mutiny' || activeSpeaker === 'Spiky Haired Girl') {
+          speakerColor = 'mutiny-color';
+        } else if (activeSpeaker === 'Claire') {
+          speakerColor = 'claire-color';
+        } else if (activeSpeaker === 'Lucy'){
+          speakerColor = 'lucy-color';
+        } else if (activeSpeaker === 'President'){
+          speakerColor = 'president-color';
+        } else if (activeSpeaker === 'Shad'){
+          speakerColor = 'shad-color';
+        } else if (activeSpeaker === 'Blaine' || activeSpeaker === 'Tacticool'){
+          speakerColor = 'blaine-color';
+        }
+      } else {
+        paragraphToRender = textConsts.examine[this.props.text.activeText][this.props.text.paragraph];
+      }
+      //get line
+      lineToRender = paragraphToRender[this.props.text.line];
+      //download bar
+      if(this.props.text.activeText === 'mapTerminal'){
+        if(this.props.text.line === 0){
+          this.startDownload();
+        } else {
+          this.setState({
+            progress : 100
+          });
+        };
+      };
+      //add special text styling
+      if(lineToRender.includes('Wound')){
+        let before = '';
+        let after = '';
+        let special = '';
+        let lineArr = lineToRender.split(" ");
+        for (let i=0; i < lineArr.length; i++){
+          if(lineArr[i] === 'Wound'){
+            special = <span className="exit-text">Wound </span>
+            if(i > 0){
+              for(let j=0; j < i; j++){
+                before = before.concat(lineArr[j]) + ' ';
+              };
             };
-          };
-          if(i < lineArr.length){
-            for(let j=i+1; j < lineArr.length; j++){
-              after = after.concat(lineArr[j]) + ' ';
+            if(i < lineArr.length){
+              for(let j=i+1; j < lineArr.length; j++){
+                after = after.concat(lineArr[j]) + ' ';
+              };
             };
           };
         };
-      };
-      if(special !== ''){
-        lineToRender = <span>{before}{special}{after}</span>;
+        if(special !== ''){
+          lineToRender = <span>{before}{special}{after}</span>;
+        }
       }
     }
   
@@ -93,7 +102,7 @@ class TextBoxes extends React.Component {
     return (
       <div id="wrap">
         <div id="box-content">
-          <div id="text-options">{lineToRender}</div>
+        <div id="dialogueText">{lineToRender}</div>
           <div className="progress-container">
             <div className="entanglement-bar" style={{width: this.state.progress + '%'}}>
             </div>
@@ -102,57 +111,35 @@ class TextBoxes extends React.Component {
         </div>
       </div>
     )
-  } else if (lineToRender == 'image'){
-    return (
-      <div id="wrap">
-        <div id="box-content">
-          <div id="text-options">{lineToRender}</div>
-          <Options text={this.props.text} menu={this.props.menu}/>
-        </div>
-      </div>
-    )
-  } else if ((this.props.text.activeTextType == 'dialogue' || this.props.text.activeText.includes('Window')) && this.props.text.options.length > 1) {
-    return (
-      <div id="wrap">
-        <div className={speakerColor} id="box-content">
-          <Speaker speaker={activeSpeaker}/>
-          <Options text={this.props.text} menu={this.props.menu}/>
-        </div>
-      </div>
-    );
-  } else if (this.props.text.options.length > 1) {
+  } else if (this.props.text.options !== null) {
       return (
         <div id="wrap">
           <div id="box-content">
             <Options text={this.props.text} menu={this.props.menu}/>
           </div>
         </div>
-      )
-    } else if (this.props.text.activeTextType == 'dialogue' || this.props.text.activeText.includes('Window')) {
+      );
+    } else if (this.props.text.activeTextType == 'dialogue') {
       return (
         <div id="wrap">
           <div className={speakerColor} id="box-content">
             <Speaker speaker={activeSpeaker}/>
             <div id="dialogueText">{lineToRender}</div>
+            <div id="next-prompt"></div>
           </div>
         </div>
       );
-    } else if (this.props.game.roomId === 'special') {
-      return (
-        <div id="wrap">
-          <div id="box-content" className="special">
-            <div id="text">{lineToRender}</div>
-          </div>
-        </div>
-      );
-    } else {
+    } else if(this.props.text.activeText !== '') {
       return (
         <div id="wrap">
           <div id="box-content">
             <div id="text">{lineToRender}</div>
+            <div id="next-prompt"></div>
           </div>
         </div>
       );
+    } else {
+      return null;
     }
   }
 }

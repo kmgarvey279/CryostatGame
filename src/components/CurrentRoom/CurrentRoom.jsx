@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import Square from '../Square/Square';
 import Filter from '../Filter/Filter';
 import './CurrentRoom.css';
-import wound from '../../assets/images/room/wound.png';
 
 function CurrentRoom(props){
-  let backgroundImage;
-  if(props.game.roomId === 10){
-    backgroundImage = <img className="room-background-image" src={wound} width="500" height="420"/>
+  let specialClass = '';
+  if(props.game.branch === 'collapse'){
+    specialClass = "room-shake"
+  } else if(props.game.filter === 'drunk'){
+    specialClass = "drunk";
   }
   return (
-    <div id="outer">
-      <Filter branch={props.game.branch} filter={props.game.filter}/>
+    <div id="outer" className={specialClass}>
+      <Filter branch={props.game.branch} filter={props.game.filter} playerHealth={props.player.health}/>
       {Object.keys(props.currentRoom).map(function(squareId) {
         var square = props.currentRoom[squareId];
         return <div id="inner"><Square value={square.value}
@@ -25,7 +26,9 @@ function CurrentRoom(props){
           transition={square.transition}
           alert={square.alert}
           bullet={square.bullet}
+          playerBullet={square.playerBullet}
           explosion={square.explosion}
+          waterdrop={square.waterdrop}
           warning={square.warning}
           shatter={square.shatter}
           tileOverlay={square.tileOverlay}
@@ -35,10 +38,11 @@ function CurrentRoom(props){
           eye={props.game.eye}
           npcs={props.npcs}
           game={props.game}
+          switches={props.switches}
+          currentRoom={props.currentRoom}
           projectiles={props.projectiles}/>
         </div>;
       })};
-      {backgroundImage}
     </div>
   );
 };
@@ -50,7 +54,8 @@ CurrentRoom.propTypes = {
   boss: PropTypes.object,
   doors: PropTypes.object,
   npcs: PropTypes.object,
-  projectiles: PropTypes.object
+  projectiles: PropTypes.object,
+  switches: PropTypes.object
 };
 
 export default CurrentRoom;

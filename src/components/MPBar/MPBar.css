@@ -33,7 +33,7 @@ div.health-bar {
     }
 
 div.bar-container {
-    width: 160px;
+    width: 210px;
 }
 
 div.entanglement-bar {
@@ -57,7 +57,7 @@ div.entanglement-bar {
 
 #bar-background {
     height: 40px;
-    width: 162px;
+    width: 210px;
     background: rgb(0,0,3);
     background: linear-gradient(0deg, rgba(0,0,3,1) 0%, rgba(51,1,69,1) 100%);
     display: inline-block;

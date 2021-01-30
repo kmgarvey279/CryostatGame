@@ -1,16 +1,23 @@
 div.item {
   z-index: 500;
   position: absolute;
-  bottom: 5px;
+  bottom: 12px;
   left: 2px;
+}
+
+.taser-icon {
+  top: -10px;
 }
 
 .item-float {
   animation-name: float;
   animation-duration: 3s;
 }
-.item-pipe{
-  left: -4px;
+.item-bracelet {
+  position: absolute;
+  left: 9px;
+  bottom: 7px;
+  z-index: 500;
 }
 
 @keyframes float {

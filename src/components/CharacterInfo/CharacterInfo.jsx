@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as soundsModule from '../../redux/modules/sounds';
+import * as soundConsts from '../App/SoundsLibrary';
 import './CharacterInfo.css';
 import taserIcon from '../../assets/images/items/taserIcon.png';
 import heart from '../../assets/images/items/health-icon.png';
@@ -51,7 +51,7 @@ class CharacterInfo extends React.Component{
 
     changeRow(direction){
         let newRow = this.state.row + direction;
-        this.props.dispatch(soundsModule.changeEffect('select'));
+        soundConsts.select.play();
         if(newRow <= 2 && newRow >= 0){
             this.setState({
                 row: newRow
@@ -61,7 +61,7 @@ class CharacterInfo extends React.Component{
 
     changeCol(direction){
         let newCol = this.state.col + direction;
-        this.props.dispatch(soundsModule.changeEffect('select'));
+        soundConsts.select.play();
         if(newCol <= 2 && newCol >= 0){
             this.setState({
                 col: newCol
@@ -162,7 +162,6 @@ class CharacterInfo extends React.Component{
                             <div id="mp-bar-background"></div>
                         </div>
                     </li>
-                    <li>Entanglement: {this.props.player.entanglement}%</li>
                     <li>
                         <div className="stuff-heading"><p>Weapons</p></div>
                         <div className="stuff">
@@ -173,8 +172,7 @@ class CharacterInfo extends React.Component{
                                 </li>
                                 <li>
                                     <div className={this.state.row === 0 && this.state.col === 1 ? "cursor" : ''}></div>
-                                    {this.props.player.weapons.includes('Cryostat') && this.props.player.cryostatUpgrade === false ? <div className="item-slot"><img className="item-slot-weapon" src={cryoIcon} width="40" height="40"/></div> : <div className="item-slot"></div>}
-                                    {this.props.player.weapons.includes('Cryostat') && this.props.player.cryostatUpgrade ? <div className="item-slot"><img className="item-slot-weapon" src={cryo2Icon} width="40" height="40"/></div> : <div className="item-slot"></div>}
+                                    {this.props.player.weapons.includes('Cryostat') ? <div className="item-slot"><img className="item-slot-weapon" src={cryoIcon} width="40" height="40"/></div> : <div className="item-slot"></div>}
                                 </li>
                                 <li>
                                     <div className={this.state.row === 0 && this.state.col === 2 ? "cursor" : ''}></div>
@@ -235,10 +233,4 @@ CharacterInfo.propTypes = {
   player: PropTypes.object.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
-    return {
-      soundsModule : bindActionCreators(soundsModule, dispatch)
-    }
-  };
-
-export default connect(mapDispatchToProps)(CharacterInfo);
+export default CharacterInfo;

@@ -1,24 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Speaker.css';
-import mutinyPortrait from '../../assets/images/npc/mutiny-portrait.gif';
-import blainePortrait from '../../assets/images/npc/blaine-portrait.gif';
-import clairePortrait from '../../assets/images/npc/claire-portrait.gif';
-import lucyYoungPortrait from '../../assets/images/npc/lucy-young-portrait.gif';
-import lucyYoungPortraitAnnoyed from '../../assets/images/npc/lucy-young-portrait-annoyed.gif';
 
 function Speaker(props){
   let color;
   let portrait;
-  if (props.speaker === 'Automated System'){
-    color = 'default-speaker';
+  if (props.speaker === ''){
+    color = 'null-speaker';
   } else if (props.speaker === 'Claire'){
     color = 'claire-speaker';
-    portrait = <img src={clairePortrait} height="200" width="210" className="claire-portrait"/>
-  } else if (props.speaker === 'Spikey Haired Girl' || props.speaker === 'Mutiny'){
+  } else if (props.speaker === 'Lucy'){
+    color = 'lucy-speaker';
+  } else if (props.speaker === 'Blaine' || props.speaker === 'Tacticool'){
+    color = 'blaine-speaker';
+  } else if (props.speaker === 'President'){
+    color = 'president-speaker';
+  } else if (props.speaker === 'Shad'){
+    color = 'shad-speaker';
+  } else if (props.speaker === 'Spiky Haired Girl'){
+    color = 'mutiny-speaker-long';
+  } else if (props.speaker === 'Mutiny'){
     color = 'mutiny-speaker';
-    portrait = <img src={mutinyPortrait} height="200" width="210" className="claire-portrait"/>
-  };
+  } else if (props.speaker === 'Weird Machine'){
+    color = 'default-speaker-long';
+  } else {
+    color = 'default-speaker';
+  }
   return (
     <div className={color}>
       {portrait}

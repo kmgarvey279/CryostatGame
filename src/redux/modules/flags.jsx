@@ -19,40 +19,51 @@ export function triggerFlag(flagId) {
 
 //Initial State
 const initialState = {
-  'bootUp1': {triggered: false},
+  //prologue
+  'startGame': {triggered: false},
+  'annoyLucy': {triggered: false},
+  'exitStartingRoom': {triggered: false},
+  'exitStairway': {triggered: false},
+  //part 1
+  'smashMachine': {triggered: false},
+  //get bracelet in first room
+  'getBracelet': {triggered: false},
   //enter hallway1
   'hallwayFight': {triggered: false},
   'hallwayClear': {triggered: false},
-  //enter room 6
-  'intercom1': {triggered: false},
   //enter room 7
-  'mutiny1': {triggered: false},
-  //finish initial conversation with mutiny
-  'mutinyWindow': {triggered: false},
-  //examine tube
-  'mutinyBigTube': {triggered: false},
+  'mutinyExit': {triggered: false},
+  //open door to midboss
+  'midbossOpen': {triggered: false},
+  //talk to mutiny
+  'mutinyIntro': {triggered: false},
   //exit room 7
-  'mutiny2': {triggered: false},
-  //approach belt in room 7
-  'mutiny3': {triggered: false},
-  //pass back over belt
-  'mutiny4': {triggered: false},
-  //enter room 3
-  'mutiny5': {triggered: false},
-  //fail room 3 puzzle
-  'mutiny6': {triggered: false},
-  //enter room 4
-  'mutiny7': {triggered: false},
-  //activate machine in room 4
-  'mutiny8': {triggered: false},
-  //enter study for first time
-  'specialRoom1': {triggered: false},
-  //get powerup
-  'specialRoom2': {triggered: false},
-  //return after getting keycard
-  'specialRoom3': {triggered: false},
-  //enter room 1 in branch 3
-  'clone': {triggered: false},
+  'mutinyExit2': {triggered: false},
+  //exit hallway3
+  'mutinyExit3': {triggered: false},
+  //exit hallway4
+  'mutinyExit4': {triggered: false},
+  //mutiny enters wound
+  'mutinyEnterWound': {triggered: false},
+  //funeral dream
+  'enterFuneral': {triggered: false},
+  'exitFuneral': {triggered: false},
+  'exitWound': {triggered: false},
+  //mutiny exit room 10
+  'mutinyCoreTalk': {triggered: false},
+  //talk to mutiny in computer room
+  'mutinyComputerTalk': {triggered: false},
+  //
+  'mutinyMessage': {triggered: false},
+  //
+  'mutinyMessage2': {triggered: false},
+  //activate 5/9 warp 
+  'warpOn': {triggered: false},
+  //
+  'mutinyEnterWound2': {triggered: false},
+  'blaineIntro': {triggered: false},
+  //mutiny enters wound... again
+  'mutinyEnterWound2': {triggered: false},
 }
 
 //Reducer

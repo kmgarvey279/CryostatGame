@@ -45,20 +45,7 @@ div#loading {
     100%  {opacity: 1; margin-left: 20px;}
   }
 
-@keyframes fade {
-  from { opacity: 1; }
-  to { opacity: 0; }
+#invert-game {
+  filter: grayscale(0%);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-div#enter {
-  animation: fadeIn 4000ms;
-}
-
-div#exit {
-  animation: fade 6000ms;
-}
